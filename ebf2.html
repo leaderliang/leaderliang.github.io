@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net"/>
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+ 
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Design Patterns in Android | 
+        
+        Dev.liang&#39;s Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/avatar.jpeg">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="
+对日常在 Android 中实用设计模式进行一下梳理和总结"/>
+    <meta name="keywords" content="Android,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期,Android,设计模式"/>
+    <meta name="theme-color" content="#0097A7"/>
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?aE/Bb7RXvDHoOY6SKxbobg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Dev.liang&#39;s Blog">
+    <meta name="msapplication-starturl" content="https://leaderliang.coding.me/ebf2.html">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Dev.liang&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://leaderliang.coding.me/ebf2.html">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Design Patterns in Android | Dev.liang&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="
+对日常在 Android 中实用设计模式进行一下梳理和总结">
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="设计模式"> 
+
+    
+        <meta property="article:published_time" content="Sat Mar 23 2019 22:51:06 GMT+0800">
+        <meta property="article:modified_time" content="Thu Dec 19 2019 10:40:45 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://leaderliang.coding.me/ebf2.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://leaderliang.coding.me/ebf2.html",
+    "headline": "Design Patterns in Android",
+    "datePublished": "Sat Mar 23 2019 22:51:06 GMT+0800",
+    "dateModified": "Thu Dec 19 2019 10:40:45 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dev.liang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpeg"
+        },
+        "description": "Hi, Nice to meet u!"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dev.liang&#39;s Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Android,设计模式Android,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期",
+    "description": "
+对日常在 Android 中实用设计模式进行一下梳理和总结",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+
+    <!-- Bing Background 动态变换图片-->
+    
+        <script type="text/javascript">
+            queue.offer(function(){
+                $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+                $('body.lazy').lazyload();
+            });
+        </script>
+    
+
+    <!-- Custom Head -->
+    
+
+    <!-- hight light 代码高亮 -->
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css" type="text/css">
+
+    <!-- 百度要验证的网站，HTML 标签验证 ，其中一种方式-->
+    <!-- baidu 站长工具验证代码 -->
+    <meta name="baidu-site-verification" content="W3v1HR1PT5" />
+    <!-- google 站长工具验证代码 -->
+    <meta name="google-site-verification" content="xkVTQEMiu9jq9ifY_Lg9DNuXJYnRfq1MVVAeLVna6S4" />
+    
+    <!-- fancybox support 应用 主题下 css js 文件-->
+    
+        <!-- for theme: default is false -->
+        <!-- for page: default is true -->
+        <script>lsloader.load("fancybox_js","/js/fancybox/jquery.fancybox.min.js?1glzq05Z/hboRWID7DvJ1w==", true)</script>
+        <script>lsloader.load("wrap_image_js","/js/wrapImage.js?KyGdrdh3jqfQLRvTgMf4Iw==", true)</script>
+        <style id="fancybox_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("fancybox_css","/js/fancybox/jquery.fancybox.min.css?otQlhCkvZMWCfotnsbOHJg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计模式（持续更新ing…）"><span class="post-toc-number">1.</span> <span class="post-toc-text">设计模式（持续更新ing…）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单例模式-Singleton-pattern"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">单例模式 (Singleton pattern)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#饿汉式、懒汉式名词解释："><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">饿汉式、懒汉式名词解释：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#为什么要在变量-singleton-加上-volatile-关键字？"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">为什么要在变量 singleton 加上 volatile 关键字？</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#双重校验锁中两个-if-判断的作用？"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">双重校验锁中两个 if 判断的作用？</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单工厂模式-Simple-Factory-Pattern"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">简单工厂模式 (Simple Factory Pattern )</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缺点"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">缺点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Android-开发中的工厂模式实践"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">Android 开发中的工厂模式实践</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#策略模式-Strategy-pattern"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">策略模式 (Strategy pattern)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点-1"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缺点-1"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">缺点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用场景"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">使用场景</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#UML-类图"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">UML 类图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#例子："><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">例子：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#观察者模式-Observer-pattern"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">观察者模式 (Observer pattern)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点-2"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#缺点-2"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">缺点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#UML"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">UML</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#java-代码实现"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">java 代码实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建抽象观察者"><span class="post-toc-number">1.4.6.1.</span> <span class="post-toc-text">创建抽象观察者</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建具体观察者"><span class="post-toc-number">1.4.6.2.</span> <span class="post-toc-text">创建具体观察者</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建抽象主题"><span class="post-toc-number">1.4.7.</span> <span class="post-toc-text">创建抽象主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建具体主题"><span class="post-toc-number">1.4.7.1.</span> <span class="post-toc-text">创建具体主题</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#测试"><span class="post-toc-number">1.4.7.2.</span> <span class="post-toc-text">测试</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#打印"><span class="post-toc-number">1.4.7.3.</span> <span class="post-toc-text">打印</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Android-中的观察者模式"><span class="post-toc-number">1.4.8.</span> <span class="post-toc-text">Android 中的观察者模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#控件中Listener监听方式"><span class="post-toc-number">1.4.8.1.</span> <span class="post-toc-text">控件中Listener监听方式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Adapter的notifyDataSetChanged-方法"><span class="post-toc-number">1.4.8.2.</span> <span class="post-toc-text">Adapter的notifyDataSetChanged()方法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#BroadcastReceiver"><span class="post-toc-number">1.4.8.3.</span> <span class="post-toc-text">BroadcastReceiver</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代理模式（Proxy-Pattern）"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">代理模式（Proxy Pattern）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#前提："><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">前提：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#UML-图"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">UML 图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#动态代理"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">动态代理</span></a></li></ol></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 22 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Design Patterns in Android
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpeg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dev.liang</strong>
+        <!-- <span>22:51 3月 23, 2019</span> -->
+        <span>3月 23, 2019</span>        
+    </div>
+
+    <!-- 阅读时长，字数统计 在 scaffolds 目录 page.md 文件中设置了 wordcount 字段，目前为 false，因为样式有点问题
+     if (page.wordcount !== false)   
+     但还是会显示 ？？？？？
+    -->
+     
+    
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB6klEQVR42u3aQW7DQAgF0Nz/0u22UprJh7HT2jyvoqZ2eF4gBnh83eJ6YGBgYGBgYGD8G8Yjvn550Itvf/7l+fPzXb0YMDAwpjHepLYXgSZhJc9sxoCBgTGSsQ4rDzHH92LAwMDA2PmZarGIgYGBcR6jGmJSSmJgYGAcdYhdM3bacB89i2NgYFyQkTflz/v80fkGBgbGpRjlFYeNcPP0evrOCAYGxqUYeeJbL1vk7bad52BgYGBUW2nJUbNa/K2fgIGBMZPRK/uqi615OVj4TwwMjDGMPJRkGJCEuC4f81eAgYExh3FUg2w/rPwlYmBgTGPkq6jVRJkHd9hZHAMD49aMndZYc/00uLc5GMDAwLgpI09zvaNp8pqqhSkGBsYcRo6ptt6SsvKUszgGBsbtGMcu1ifpeH+tHwMDYyYjh/UScZUa3YWBgYER/PC6EMyTbzI2wMDAwMgPk9WB5ZrdGzNgYGBMY1SvPLhe2ZfwMDAwpjGqLbDqODMfG5QTOgYGxjBGNcnmLbbqIbkwKMXAwBjJ6A0yqyk1LwGbCRcDAwOjOM7sLYc1D7EYGBgYy9SZLE9Um2tvikgMDIyRjOQQGx0vWwOA8uoGBgbGMEZvAaLaRKs22k6cb2BgYFyKcd0LAwMDAwMDA+NPr28J4wgUoyhxfgAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/android/" rel="tag">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/design-patterns/" rel="tag">设计模式</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/ebf2.html" class="leancloud-views_num" data-flag-title="Design Patterns in Android">
+     &nbsp;次阅读
+</span>
+
+            </li>
+        </a>
+    
+
+    <!-- busuanzi_value_page_pv busuanzi 页面访问记录-->
+    <!-- 
+         -->
+             <!-- Busuanzi Views -->
+
+            <!-- <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+      -->
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="https://service.weibo.com/share/share.php?appkey=&title=Design Patterns in Android&url=https://leaderliang.coding.me/ebf2.html&pic=https://leaderliang.coding.me/img/avatar.jpeg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Design Patterns in Android&url=https://leaderliang.coding.me/ebf2.html&via=dev.liang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://leaderliang.coding.me/ebf2.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://leaderliang.coding.me/ebf2.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://leaderliang.coding.me/ebf2.html&title=Design Patterns in Android" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="https://connect.qq.com/widget/shareqq/index.html?site=Dev.liang&#39;s Blog&title=Design Patterns in Android&summary=Dev.liang&#39;s Blog - Android 技术分享、生活记录&pics=https://leaderliang.coding.me/img/avatar.jpeg&url=https://leaderliang.coding.me/ebf2.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=https://leaderliang.coding.me/ebf2.html&text=Design Patterns in Android" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>对日常在 Android 中实用设计模式进行一下梳理和总结<a id="more"></a>，文中参考了一些网站和大佬的博客，如          <a href="http://blog.csdn.net/xiong_it" target="_blank" rel="noopener">MichaelX（xiong_it）</a> 、<a href="http://www.runoob.com" target="_blank" rel="noopener">菜鸟教程</a>、<a href="https://www.jianshu.com/p/8f32da74cd8b" target="_blank" rel="noopener">四月葡萄</a>、<a href="https://juejin.im/post/5a4e4725f265da3e2c37e36e" target="_blank" rel="noopener">IAM四十二</a>等，在这里注明下~另外强烈推荐<a href="https://design-patterns.readthedocs.io/zh_CN/latest/index.html" target="_blank" rel="noopener">图说设计模式</a>，看了一部分，有些介绍的还是很通俗易懂的。</p>
+</blockquote>
+<h2 id="设计模式（持续更新ing…）"><a href="#设计模式（持续更新ing…）" class="headerlink" title="设计模式（持续更新ing…）"></a>设计模式（持续更新ing…）</h2><h3 id="单例模式-Singleton-pattern"><a href="#单例模式-Singleton-pattern" class="headerlink" title="单例模式 (Singleton pattern)"></a>单例模式 (Singleton pattern)</h3><p>确保一个类只有一个实例，并且自行实例化并向整个系统提供这个实例(并提供对该实例的全局访问)</p>
+<h4 id="饿汉式、懒汉式名词解释："><a href="#饿汉式、懒汉式名词解释：" class="headerlink" title="饿汉式、懒汉式名词解释："></a>饿汉式、懒汉式名词解释：</h4><p><strong>饿汉式：</strong>不管程序是否需要这个对象的实例，总是在类加载的时候就先创建好实例，理解起来就像不管一个人想不想吃东西都把吃的先买好，如同饿怕了一样。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 饿汉式</span><br><span class="line"> */</span><br><span class="line">public class Singleton &#123;</span><br><span class="line"></span><br><span class="line">    private static Singleton instance = new Singleton();</span><br><span class="line"></span><br><span class="line">    private Singleton() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Singleton getInstance() &#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：写法简单，线程安全。</li>
+<li>缺点：没有懒加载的效果，如果没有使用过的话会造成内存浪费</li>
+</ul>
+<p><strong>懒汉式：</strong>如果一个对象使用频率不高，占用内存还特别大，明显就不合适用饿汉式了，这时就需要一种懒加载的思想，当程序需要这个实例的时候才去创建对象，就如同一个人懒的饿到不行了才去吃东西。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 懒汉式</span><br><span class="line"> */</span><br><span class="line">public class Singleton &#123;  </span><br><span class="line">    /**</span><br><span class="line">     * volatile 关键字修饰的变量，一次只能有一个线程操作该变量，保证线程安全</span><br><span class="line">     * volatile 能够防止代码的重排序，保证得到的对象是初始化过</span><br><span class="line">     */</span><br><span class="line">    private volatile static Singleton mSingleton;  </span><br><span class="line">    </span><br><span class="line">    private Singleton ()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;  </span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * 双重校验锁模式</span><br><span class="line">     */</span><br><span class="line">    public static Singleton getSingleton() &#123;  </span><br><span class="line">    if (mSingleton == null) &#123; // 第一次检查，避免不必要的同步 </span><br><span class="line">        synchronized (Singleton.class) &#123;  // 同步</span><br><span class="line">        if (mSingleton == null) &#123;  // 第二次检查，为null时才创建实例</span><br><span class="line">            mSingleton = new Singleton();  </span><br><span class="line">        &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return mSingleton;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：懒加载，线程安全，效率较高</li>
+<li>缺点：volatile 影响一点性能，高并发下有一定的缺陷，某些情况下 DCL 会失效，虽然概率较小</li>
+</ul>
+<p><strong>volatile</strong> 关键字修饰的变量，一次只能有一个线程操作该变量，保证线程安全。</p>
+<h4 id="为什么要在变量-singleton-加上-volatile-关键字？"><a href="#为什么要在变量-singleton-加上-volatile-关键字？" class="headerlink" title="为什么要在变量 singleton 加上 volatile 关键字？"></a>为什么要在变量 singleton 加上 volatile 关键字？</h4><p>要理解这个问题，先要了解对象的构造过程，实例化一个对象其实可以分为三个步骤：</p>
+<ul>
+<li>分配内存空间</li>
+<li>初始化对象</li>
+<li>将内存空间的地址赋值给对应的引用</li>
+</ul>
+<p>但是由于操作系统可以对指令进行重排序，所以上面的过程也可能会变成如下过程：</p>
+<ul>
+<li>分配内存空间</li>
+<li>将内存空间的地址赋值给对应的引用</li>
+<li>初始化对象</li>
+</ul>
+<p>如果是这个流程，多线程环境下就可能将一个未初始化的对象引用暴露出来，从而导致不可预料的结果。因此，为了防止这个过程的重排序，我们需要将变量设置为volatile类型的变量。</p>
+<h4 id="双重校验锁中两个-if-判断的作用？"><a href="#双重校验锁中两个-if-判断的作用？" class="headerlink" title="双重校验锁中两个 if 判断的作用？"></a>双重校验锁中两个 if 判断的作用？</h4><p>第一：是为了提高程序的 效率，当 Singleton 对象被创建以后，再获取 Singleton 对象时就 不用去验证同步代码块的锁及后面的代码，直接返回Singleton 对象。<br>第二：是为了解决多线程下的安全性问题，也就是保证对象的唯一。<br>如果没有第二个 if 判断，A、B两个线程，A 先执行， 线程 B 再进入 synchronized (instance)块，不用去验证instance 是否为 null，就会直接创建一个 Singleton 新对象，这样整个程序运行下来就有可能创建多个实例。</p>
+<blockquote>
+<p>注意：<br>如果处于多线程环境，注意保持线程安全，不然就无法保证单例了；<br>单例模式的默认构造方法的修饰符需改为 private，只能类内部访问，确保外部不能直接 new 出该实例；<br>单例模式需要提供一个全局访问入口，这个入口通常以 getInstance() 的 public 静态方法形式呈现。</p>
+</blockquote>
+<br>
+
+<h3 id="简单工厂模式-Simple-Factory-Pattern"><a href="#简单工厂模式-Simple-Factory-Pattern" class="headerlink" title="简单工厂模式 (Simple Factory Pattern )"></a>简单工厂模式 (Simple Factory Pattern )</h3><blockquote>
+<p>更多详细介绍工程模式，可链接查看 <a href="https://www.jianshu.com/p/e594f140b937" target="_blank" rel="noopener">四月葡萄</a></p>
+</blockquote>
+<p>定义一个接口用于创建对象，但是让子类决定初始化哪个类。工厂方法把一个类的初始化下放到子类。</p>
+<p>生成复杂对象时，确定只有一个工厂类，可以使用简单工厂模式。否则有多个工厂类的话，使用<a href="https://www.jianshu.com/p/e6c02a54f447" target="_blank" rel="noopener">工厂方法模式</a>。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>代码解耦，创建实例的工作与使用实例的工作分开，使用者不必关心类对象如何创建。</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>违背开放封闭原则，若需添加新产品则必须修改工厂类逻辑，会造成工厂逻辑过于复杂。<br>简单工厂模式使用了静态工厂方法，因此静态方法不能被继承和重写。<br>工厂类包含了所有实例（产品）的创建逻辑，若工厂类出错，则会造成整个系统都会会受到影响。</p>
+<h4 id="Android-开发中的工厂模式实践"><a href="#Android-开发中的工厂模式实践" class="headerlink" title="Android 开发中的工厂模式实践"></a>Android 开发中的工厂模式实践</h4><p>场景：项目中使用了 Universal Image Loader作为图片加载框架，过一段时间后，发现 UIL 已经不流行了，想用更加 fashion的 Glide 来代替 UIL，再或者有一天，Glide 不更新，也不 fashion 了… 难道又要换其他图片加载框架？难道又改吗？？？<br>这个时候，工厂方法可能可以帮上忙：使用工厂类隔离图片加载的具体实现，对外只暴露一个工厂方法用来外部生产想要的加载框架实例，就可避免上述提到的尴尬。</p>
+<p>图片加载接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 图片加载接口</span><br><span class="line"> */</span><br><span class="line">public interface ImageLoaderInterf &#123;</span><br><span class="line">    interface CallBack &#123;</span><br><span class="line">        void onSuccess(Bitmap result);</span><br><span class="line">        void onFailure();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void load(Context context, String imgUrl, ImageView view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>图片加载工厂类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class ImgLoaderClientFactory &#123;</span><br><span class="line">    public static final GLIDE = 0;</span><br><span class="line">    public static final UIL = 1;</span><br><span class="line">    public static final PICASSO = 2;</span><br><span class="line"></span><br><span class="line">    public static ImageLoaderInterf getImageLoaderClient(int type) &#123;</span><br><span class="line">        switch (type) &#123;</span><br><span class="line">            case GLIDE:</span><br><span class="line">                return GlideClient.getInstance();</span><br><span class="line"></span><br><span class="line">            case UIL:</span><br><span class="line">                return UilClient.getInstance();</span><br><span class="line"></span><br><span class="line">            default:</span><br><span class="line">                return PicassoClient.getInstance();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>UilClient：Universal Image Loader封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class UilClient implements ImageLoaderInterf &#123;</span><br><span class="line"></span><br><span class="line">    private static UilClient sInstance;</span><br><span class="line"></span><br><span class="line">    private UilClient() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static UilClient getInstance() &#123;</span><br><span class="line">        synchronized (UilClient.class) &#123;</span><br><span class="line">            if (sInstance == null) &#123;</span><br><span class="line">                sInstance = new UilClient();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void load(Context context, String imgUrl, ImageView view) &#123;</span><br><span class="line">        ImageLoader.getInstance().displayImage(imgUrl, view);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GlideClient：Glide的二次封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class GlideClient implements ImageLoaderInterf &#123;</span><br><span class="line">    private static GlideClient sInstance;</span><br><span class="line"></span><br><span class="line">    private GlideClient() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static GlideClient getInstance() &#123;</span><br><span class="line">        synchronized (GlideClient.class) &#123;</span><br><span class="line">            if (sInstance == null) &#123;</span><br><span class="line">                sInstance = new GlideClient();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void load(Context context, String imgUrl, ImageView view) &#123;</span><br><span class="line">        Glide.with(context).load(imgUrl).into(view);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PicassoClient：Picasso封装类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class PicassoClient implements ImageLoaderInterf &#123;</span><br><span class="line"></span><br><span class="line">    private static PicassoClient sInstance;</span><br><span class="line"></span><br><span class="line">    private PicassoClient() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static PicassoClient getInstance() &#123;</span><br><span class="line">        synchronized (PicassoClient.class) &#123;</span><br><span class="line">            if (sInstance == null) &#123;</span><br><span class="line">                sInstance = new PicassoClient();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sInstance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void load(Context context, String imgUrl, ImageView view) &#123;</span><br><span class="line">        Picasso.with(context).load(imgUrl).into(view);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>那么加载图片设置就变成了下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImgLoaderClientFactory.getImageLoaderClient(ImgLoaderClientFactory.UIL).load(mContext, imgUrl, imageView);</span><br></pre></td></tr></table></figure>
+
+<p>要切换图片框架呢？怎么办？可以单独写一个变量通过赋值，全局使用，或者 全局搜索替换 ImgLoaderClientFactory.UIL 也行，比如想切到Glide，将用到 ImgLoaderClientFactory.UIL 地方改成 ImgLoaderClientFactory.GLIDE 即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImgLoaderClientFactory.getImageLoaderClient(ImgLoaderClientFactory.GLIDE).load(mContext, imgUrl, imageView);</span><br></pre></td></tr></table></figure>
+
+
+<br>
+
+<h3 id="策略模式-Strategy-pattern"><a href="#策略模式-Strategy-pattern" class="headerlink" title="策略模式 (Strategy pattern)"></a>策略模式 (Strategy pattern)</h3><p>定义一组算法，将其各个封装，并且使他们有交换性</p>
+<p>策略模式好处在于使得算法在用户使用的时候能独立的改变，单一的修改，并且有良好扩展性。</p>
+<blockquote>
+<p>算法：指的是各个策略的实现逻辑，而非算法领域的数据算法。</p>
+</blockquote>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>策略类可以互相替换<br>由于策略类都实现同一个接口，因此他们能够互相替换。</li>
+<li>耦合度低，方便扩展<br>增加一个新的策略只需要添加一个具体的策略类即可，基本不需要改变原有的代码，符合开闭原则。</li>
+<li>避免使用多重条件选择语句（if-else或者switch）。</li>
+</ul>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>策略的增多会导致子类的也会变多</li>
+<li>客户端必须知道所有的策略类，并自行决定使用哪一个策略类。</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><ul>
+<li>如果在一个系统里面有许多类，它们之间的区别仅在于它们的行为，那么使用策略模式可以动态地让一个对象在许多行为中选择一种行为。 </li>
+<li>一个系统需要动态地在几种算法中选择一种。 </li>
+<li>如果一个对象有很多的行为，如果不用恰当的模式，这些行为就只好使用多重的条件选择语句来实现。</li>
+</ul>
+<h4 id="UML-类图"><a href="#UML-类图" class="headerlink" title="UML 类图"></a>UML 类图</h4><p><img src="/img/blog/design-pattern/Strategy.jpg" alt="Strategy UML"></p>
+<!-- <div align="left"> 
+<img alt="Strategy UML" class="post-image-center" src="/img/blog/design-pattern/Strategy.jpg" height="100%" width="100%" > 
+</div> -->
+
+
+<p><strong>策略模式各角色讲解：</strong><br><strong>Strategy：</strong>策略基类（接口或者抽象类再或者抽象策略类），定义子策略需要实现的方法，比如 algorithm()，该方法取决于客户端代码（高层代码）需要该策略实现什么功能，子类则实现该方法，封装自己的算法，供外部调用。<br><strong>Context：</strong>此 Context，非彼（Android中的）Context，它持有 Strategy 真实的实例对象，提供给客户端调用 Strategy 时的上下文调度者。<br><strong>ConcreteStrategyA：</strong>实现父类 Strategy 的方法，封装自身算法逻辑。<br><strong>ConcreteStrategyB：</strong>同上</p>
+<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><p>一个加减乘除的策略，定义一个 Strategy 接口，然后针对接口实现对应的加减乘除的实体策略类。</p>
+<p>android 中的策略模式应用实践：<br>需求：接入微信支付，支付宝支付，银联支付等移动端通用支付方式。</p>
+<p>以下是大致实现：</p>
+<ul>
+<li>PayActivity：客户端角色，支付方式选择界面</li>
+<li>AbsPayStrategy：作为支付策略基类，定义了一个pay方法</li>
+<li>PayContext：上下文角色，用来封装支付AbsPayStrategy对象</li>
+<li>WeChatPayStrategy：封装了微信支付算法逻辑</li>
+<li>ALiPayStrategy：封装了支付宝支付算法逻辑</li>
+<li>BankCardPayStrategy：封装了银行卡支付算法逻辑</li>
+</ul>
+<p>支付功能的示意代码：AbsPayStrategy的实际实现应该为抽象类，它需要持有Activity对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface AbsPayStrategy &#123;</span><br><span class="line">    // private Activity mActivity;</span><br><span class="line">    // 本策略主要就是实现支付功能</span><br><span class="line">    void pay();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>Context 上下文角色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class PayContext &#123;</span><br><span class="line">    private AbsPayStrategy mPayStrategy;</span><br><span class="line"></span><br><span class="line">    public PayContext(AbsPayStrategy payStrategy) &#123;</span><br><span class="line">        mPayStrategy = payStrategy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void pay() &#123;</span><br><span class="line">        mPayStrategy.pay();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>微信支付策略实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 微信支付策略</span><br><span class="line"> */</span><br><span class="line">public class WeChatPayStrategy implements AbsPayStrategy &#123;</span><br><span class="line"></span><br><span class="line">    public void pay() &#123;</span><br><span class="line">        // 此处封装微信支付逻辑</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>支付宝支付策略实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 支付宝支付策略</span><br><span class="line"> */</span><br><span class="line">public class ALiPayStrategy  implements AbsPayStrategy &#123;</span><br><span class="line"></span><br><span class="line">    public void pay() &#123;</span><br><span class="line">        // 此处封装支付宝支付逻辑</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体的客户端代码，此处为PayActivity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class PayActivity extends Activity implements View.OnclickListener&#123;</span><br><span class="line"></span><br><span class="line">    private PayContext mPayContext;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View view) &#123;</span><br><span class="line">        switch(v.getId()) &#123;// 客户端来决定使用哪种支付策略</span><br><span class="line">            case R.id.wechat_pay:</span><br><span class="line">                mPayContext = new PayContext(new WechatPayStrategy());</span><br><span class="line">                break;</span><br><span class="line">            case R.id.wechat_pay:</span><br><span class="line">                mPayContext = new PayContext(new ALiPayStrategy());</span><br><span class="line">                break;</span><br><span class="line">            case R.id.wechat_pay:</span><br><span class="line">                mPayContext = new PayContext(BankCardPayStrategy());</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                mPayContext = new PayContext(new WechatPayStrategy());</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        // 利用实际的支付策略对象进行支付</span><br><span class="line">        mPayContext.pay();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就实现了一个 app 内的支付功能，如果微信支付出现问题了，改动微信支付策略代码，支付宝支付出现问题，改动想要实现即可，职责单一。<br>如果PM有一天说：我们需要接入更多支付，怎么办？ 简单啊，实现相应的支付策略即可，完美适应需求变更，实现功能扩展。</p>
+<br>
+
+<h3 id="观察者模式-Observer-pattern"><a href="#观察者模式-Observer-pattern" class="headerlink" title="观察者模式 (Observer pattern)"></a>观察者模式 (Observer pattern)</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>定义对象间的一种一对多依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并被自动更新。<br>观察者模式又叫做发布-订阅（Publish/Subscribe）模式、模型-视图（Model/View）模式、源-监听器（Source/Listener）模式或从属者（Dependents）模式。</p>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>观察者模式属于（对象）行为型模式。<br>观察者模式又被称作发布/订阅模式。<br>观察者模式主要用来解耦，将被观察者和观察者解耦，让他们之间没有没有依赖或者依赖关系很小。</p>
+<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><p>解除观察者与主题之间的耦合。让耦合的双方都依赖于抽象，而不是依赖具体。从而使得各自的变化都不会影响另一边的变化。<br>易于扩展，对同一主题新增观察者时无需修改原有代码。</p>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><p>依赖关系并未完全解除，抽象主题仍然依赖抽象观察者。<br>使用观察者模式时需要考虑一下开发效率和运行效率的问题，程序中包括一个被观察者、多个观察者，开发、调试等内容会比较复杂，而且在Java中消息的通知一般是顺序执行，那么一个观察者卡顿，会影响整体的执行效率，在这种情况下，一般会采用异步实现。<br>可能会引起多余的数据通知</p>
+<h4 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h4><p><img src="/img/blog/design-pattern/Observer.jpg" alt="Observer UML"></p>
+<p><strong>策略模式各角色说明：</strong><br><strong>Subject（抽象主题）：</strong>又叫抽象被观察者，把所有观察者对象的引用保存到一个集合里，每个主题都可以有任何数量的观察者。抽象主题提供一个接口，可以增加和删除观察者对象。<br><strong>ConcreteSubject（具体主题）：</strong>又叫具体被观察者，将有关状态存入具体观察者对象；在具体主题内部状态改变时，给所有登记过的观察者发出通知。<br><strong>Observer (抽象观察者):</strong>为所有的具体观察者定义一个接口，在得到主题通知时更新自己。<br><strong>ConcrereObserver（具体观察者）：</strong>实现抽象观察者定义的更新接口，当得到主题更改通知时更新自身的状态。</p>
+<h4 id="java-代码实现"><a href="#java-代码实现" class="headerlink" title="java 代码实现"></a>java 代码实现</h4><h5 id="创建抽象观察者"><a href="#创建抽象观察者" class="headerlink" title="创建抽象观察者"></a>创建抽象观察者</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * TODO Observer (抽象观察者):为所有的具体观察者定义一个接口，在得到主题通知时更新自己。</span><br><span class="line"> * 定义一个接到通知的更新方法，即收件人收到通知后的反应</span><br><span class="line"> *</span><br><span class="line"> * @author dev.liang &lt;a href=&quot;mailto:dev.liang@outlook.com&quot;&gt;Contact me.&lt;/a&gt;</span><br><span class="line"> * @version 1.0</span><br><span class="line"> * @since 2019/03/24 16:29</span><br><span class="line"> */</span><br><span class="line">public interface Observer &#123;</span><br><span class="line">    void update(String msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="创建具体观察者"><a href="#创建具体观察者" class="headerlink" title="创建具体观察者"></a>创建具体观察者</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * TODO （具体观察者）：实现抽象观察者定义的更新接口，当得到主题更改通知时更新自身的状态。</span><br><span class="line"> *</span><br><span class="line"> * @author dev.liang &lt;a href=&quot;mailto:dev.liang@outlook.com&quot;&gt;Contact me.&lt;/a&gt;</span><br><span class="line"> * @version 1.0</span><br><span class="line"> * @since 2019/03/24 16:55</span><br><span class="line"> */</span><br><span class="line">public class ConcreteObserver implements Observer &#123;</span><br><span class="line"></span><br><span class="line">    String mObserverName;</span><br><span class="line"></span><br><span class="line">    public ConcreteObserver(String mObserverName) &#123;</span><br><span class="line">        this.mObserverName = mObserverName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void update(String msg) &#123;</span><br><span class="line">        System.out.println(&quot;具体观察者&quot; + mObserverName + &quot;,收到了信息:&quot; + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="创建抽象主题"><a href="#创建抽象主题" class="headerlink" title="创建抽象主题"></a>创建抽象主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * TODO</span><br><span class="line"> * Subject（抽象主题）：</span><br><span class="line"> * 又叫抽象被观察者，把所有观察者对象的引用保存到一个集合里，</span><br><span class="line"> * 每个主题都可以有任何数量的观察者。</span><br><span class="line"> * 抽象主题提供一个接口，可以增加和删除观察者对象。</span><br><span class="line"> *</span><br><span class="line"> * @author dev.liang &lt;a href=&quot;mailto:dev.liang@outlook.com&quot;&gt;Contact me.&lt;/a&gt;</span><br><span class="line"> * @version 1.0</span><br><span class="line"> * @since 2019/03/24 16:11</span><br><span class="line"> */</span><br><span class="line">public interface Subject &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 添加观察者</span><br><span class="line">     *</span><br><span class="line">     * @param observer</span><br><span class="line">     */</span><br><span class="line">    void attach(Observer observer);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 删除观察者</span><br><span class="line">     *</span><br><span class="line">     * @param observer</span><br><span class="line">     */</span><br><span class="line">    void detach(Observer observer);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 通知观察者</span><br><span class="line">     *</span><br><span class="line">     * @param msg</span><br><span class="line">     */</span><br><span class="line">    void notify(String msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="创建具体主题"><a href="#创建具体主题" class="headerlink" title="创建具体主题"></a>创建具体主题</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * subscribe</span><br><span class="line"> * TODO ConcreteSubject（具体主题）：</span><br><span class="line"> *      又叫具体被观察者，将有关状态存入具体观察者对象；</span><br><span class="line"> *      在具体主题内部状态改变时，给所有登记过的观察者发出通知.</span><br><span class="line"> *</span><br><span class="line"> * @author dev.liang &lt;a href=&quot;mailto:dev.liang@outlook.com&quot;&gt;Contact me.&lt;/a&gt;</span><br><span class="line"> * @version 1.0</span><br><span class="line"> * @since 2019/03/24 16:34</span><br><span class="line"> */</span><br><span class="line">public class ConcreteSubject implements Subject&#123;</span><br><span class="line"></span><br><span class="line">    private List&lt;Observer&gt; observerList = new ArrayList();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void attach(Observer observer) &#123;</span><br><span class="line">        observerList.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void detach(Observer observer) &#123;</span><br><span class="line">        observerList.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void notify(String msg) &#123;</span><br><span class="line">        /*循环通知收件人（观察者）*/</span><br><span class="line">        if(!CollectionUtils.isEmpty(observerList)) &#123;</span><br><span class="line">            for (Observer observer : observerList) &#123;</span><br><span class="line">                observer.update(msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class ObserverTest &#123;</span><br><span class="line">    public static void main(String[] str) &#123;</span><br><span class="line">        ConcreteSubject concreteSubject = new ConcreteSubject();</span><br><span class="line">        Observer observerLiang = new ConcreteObserver(&quot;老梁&quot;);</span><br><span class="line">        Observer observerWang = new ConcreteObserver(&quot;老王&quot;);</span><br><span class="line">        concreteSubject.attach(observerLiang);</span><br><span class="line">        concreteSubject.attach(observerWang);</span><br><span class="line">        concreteSubject.notify(&quot;今天发工资~&quot;);</span><br><span class="line">        /*老梁没发工资*/</span><br><span class="line">        concreteSubject.detach(observerLiang);</span><br><span class="line">        concreteSubject.notify(&quot;发了工资~&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">具体观察者老梁,收到了信息:发工资啦~</span><br><span class="line">具体观察者老王,收到了信息:发工资啦~</span><br><span class="line">具体观察者老王,收到了信息:发了工资~</span><br></pre></td></tr></table></figure>
+
+<h4 id="Android-中的观察者模式"><a href="#Android-中的观察者模式" class="headerlink" title="Android 中的观察者模式"></a>Android 中的观察者模式</h4><h5 id="控件中Listener监听方式"><a href="#控件中Listener监听方式" class="headerlink" title="控件中Listener监听方式"></a>控件中Listener监听方式</h5><h5 id="Adapter的notifyDataSetChanged-方法"><a href="#Adapter的notifyDataSetChanged-方法" class="headerlink" title="Adapter的notifyDataSetChanged()方法"></a>Adapter的notifyDataSetChanged()方法</h5><h5 id="BroadcastReceiver"><a href="#BroadcastReceiver" class="headerlink" title="BroadcastReceiver"></a>BroadcastReceiver</h5><p>BroadcastReceiver 作为 Android 的四大组件之一,实际上也是一个典型的观察者模式.通过 sendBroadcast 发送广播时,只有注册了相应的 IntentFilter 的 BroadcastReceiver 对象才会收到这个广播信息,其onReceive方法才会被调起。</p>
+<br>
+
+<h3 id="代理模式（Proxy-Pattern）"><a href="#代理模式（Proxy-Pattern）" class="headerlink" title="代理模式（Proxy Pattern）"></a><a href="https://juejin.im/post/5a4e4725f265da3e2c37e36e" target="_blank" rel="noopener"><strong>代理模式（Proxy Pattern）</strong></a></h3><p>为目标对象提供一种代理，客户端通过代理去访问目标对象。</p>
+<h4 id="前提："><a href="#前提：" class="headerlink" title="前提："></a>前提：</h4><p>如果从写代码的角度出发，当我们遇到以下场景：</p>
+<ul>
+<li>无法直接访问某个对象</li>
+<li>不想直接访问某个对象</li>
+<li>访问某个对象存在困难</li>
+</ul>
+<p>的时候，我们就可以通过一个代理，通过它来间接访问真正的对象。</p>
+<h4 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图"></a>UML 图</h4><p><img src="./img/blog/design-pattern/proxy.jpeg" alt="proxy"></p>
+<p>从代理模式的 UML 类图中，我们可以得到如下结论：</p>
+<ul>
+<li>代理对象和委托对象需要实现相同的接口（抽象类）;</li>
+<li>代理对象持有委托对象的引用;</li>
+</ul>
+<p>可以看到，代理模式非常简洁，总共就三个角色，包括抽象主题，委托者和代理者。用代码实现以下代理模式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public interface Subject &#123;</span><br><span class="line">    void doSomething();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 委托类</span><br><span class="line"> */</span><br><span class="line">public class RealSubject implements Subject &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void doSomething() &#123;</span><br><span class="line">        System.out.println(&quot;This is real doSomeThing&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 代理类</span><br><span class="line"> */</span><br><span class="line">public class ProxySubject implements Subject &#123;</span><br><span class="line"></span><br><span class="line">    private Subject mSubject;</span><br><span class="line">    // 代理类持有委托类的引用</span><br><span class="line">    public ProxySubject(Subject realSubject) &#123;</span><br><span class="line">        mSubject = realSubject;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void doSomething() &#123;</span><br><span class="line">        mSubject.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //创建委托类</span><br><span class="line">        Subject mRealSubject=new RealSubject();</span><br><span class="line">        //创建代理类</span><br><span class="line">        ProxySubject mProxy = new ProxySubject(mRealSubject);</span><br><span class="line">        //由代理类去做具体的操作</span><br><span class="line">        mProxy.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 RealSubject 和 ProxySubject 都实现了接口 Subject。在客户端使用ProxySubject 的实例调用 doSomething() 方法，而不是使用 RealSubject 的实例来实现。</p>
+<p>你可能会好奇，这么做的意义是什么呢？直接用 RealSubject 的实例来调用 doSomething 方法不也可以吗？何必多此一举。试想，如果现在有很多个委托类，他们各自的实现都不同，客户端只关心doSomething 的调用，而不关心具体的实现，这样代理类就可以在其内部屏蔽委托类之间的差异了，这也是客户端不想关注的事情。</p>
+<h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><p>以上的分析中，代理类是由我们直接创建好的；现实中可能还有这样一种场景，代理类并不是在程序编译的时候创建，而是在运行的过程中通过Java的反射机制动态的进行创建，这样的代理模式成为动态代理，对应的之前我们所说的就是静态代理了。</p>
+<p>其实，动态代理的实现没有什么可说的，说白了都是模板代码，Java为开发者提供了InvocationHandler,实现该接口重写其invoke 方法即可。</p>
+<p>代码示例可在 <a href="https://github.com/leaderliang/MyPracticeDemo/tree/master/JavaDesignModel/src/com/java/designmodel/proxy_dynamic" target="_blank" rel="noopener"><strong>Github</strong></a> 上查看。</p>
+<p>在 Android 中，关于动态代理的使用，最经典的就是 Retrofit 了。这里可以简单看一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 声明自己的网络请求接口</span><br><span class="line"> */</span><br><span class="line">public interface GithubService &#123;</span><br><span class="line"></span><br><span class="line">    @GET(&quot;/users/leaderliang/repos&quot;)</span><br><span class="line">    Call&lt;List&lt;Repo&gt;&gt; getUserRepos();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化 Retrofit，发起网络请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Retrofit retrofit = new Retrofit.Builder()</span><br><span class="line">         .baseUrl(&quot;https://api.github.com&quot;)</span><br><span class="line">         .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">         .build();</span><br><span class="line">                </span><br><span class="line">GithubService mGithubService = retrofit.create(GithubService.class);</span><br><span class="line">Call&lt;List&lt;Repo&gt;&gt; repos = mGithubService.getUserRepos();</span><br><span class="line">repos.enqueue(new Callback&lt;List&lt;Repo&gt;&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onResponse(Call&lt;List&lt;Repo&gt;&gt; call, Response&lt;List&lt;Repo&gt;&gt; response) &#123;</span><br><span class="line">        System.out.println(response.code() + &quot; &quot; + new Gson().toJson(response.body()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onFailure(Call&lt;List&lt;Repo&gt;&gt; call, Throwable t) &#123;</span><br><span class="line">        Toast.makeText(MainActivity.this, &quot;onFailure&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码使用过 Retrofit 的应该熟悉吧。当我们用 Retrofit 实例，调用其 create 方法时，发现就已经帮我们做好了 GithubService 的实现，发生了什么呢？下面是 creat 示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; T create(final Class&lt;T&gt; service) &#123;</span><br><span class="line">    Utils.validateServiceInterface(service);</span><br><span class="line">    if (validateEagerly) &#123;</span><br><span class="line">      eagerlyValidateMethods(service);</span><br><span class="line">    &#125;</span><br><span class="line">    // new Class&lt;?&gt;[] &#123; service &#125; 声明了 service，但是我们需要知道这个过程是怎么去实现的。</span><br><span class="line">    return (T) Proxy.newProxyInstance(service.getClassLoader(), new Class&lt;?&gt;[] &#123; service &#125;,</span><br><span class="line">        new InvocationHandler() &#123;</span><br><span class="line">          private final Platform platform = Platform.get();</span><br><span class="line">          private final Object[] emptyArgs = new Object[0];</span><br><span class="line"></span><br><span class="line">          @Override public Object invoke(Object proxy, Method method, @Nullable Object[] args)</span><br><span class="line">              throws Throwable &#123;</span><br><span class="line">            // If the method is a method from Object then defer to normal invocation.</span><br><span class="line">            if (method.getDeclaringClass() == Object.class) &#123;</span><br><span class="line">              return method.invoke(this, args);</span><br><span class="line">            &#125;</span><br><span class="line">            if (platform.isDefaultMethod(method)) &#123;</span><br><span class="line">              return platform.invokeDefaultMethod(method, service, proxy, args);</span><br><span class="line">            &#125;</span><br><span class="line">            return loadServiceMethod(method).invoke(args != null ? args : emptyArgs);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>create（） 方法里的 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (T) Proxy.newProxyInstance(service.getClassLoader(), new Class&lt;?&gt;[] &#123; service &#125;, new InvocationHandler() &#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>实际体现的就是动态代理的整个过程，这个 return 就相当于动态创建了 ProxyService 这个代理类，写一段伪代码，应该可以帮助进一步理解了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class ProxyService implements GithubService &#123;</span><br><span class="line"></span><br><span class="line">    InvocationHandler invocationHandler = new InvocationHandler() &#123;</span><br><span class="line">        private final Platform platform = Platform.get();</span><br><span class="line">        private final Object[] emptyArgs = new Object[0];</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public Object invoke(Object proxy, Method method, @Nullable Object[] args)</span><br><span class="line">                throws Throwable &#123;</span><br><span class="line">            // If the method is a method from Object then defer to normal invocation.</span><br><span class="line">            if (method.getDeclaringClass() == Object.class) &#123;</span><br><span class="line">                return method.invoke(this, args);</span><br><span class="line">            &#125;</span><br><span class="line">            if (platform.isDefaultMethod(method)) &#123;</span><br><span class="line">                return platform.invokeDefaultMethod(method, service, proxy, args);</span><br><span class="line">            &#125;</span><br><span class="line">            return loadServiceMethod(method).invoke(args != null ? args : emptyArgs);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Call&lt;List&lt;Repo&gt;&gt; getUserRepos() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Method method = GithubService.class.getMethod(&quot;getUserRepos&quot;);</span><br><span class="line">            return (Call&lt;List&lt;Repo&gt;&gt;) invocationHandler.invoke(this, method, null);</span><br><span class="line">        &#125; catch (NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; catch (Throwable throwable) &#123;</span><br><span class="line">            throwable.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 其他接口</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public Call&lt;User&gt; getOtherMethod()&#123;</span><br><span class="line">            //...</span><br><span class="line">        return ...;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，这里就是一个典型的动态代理实现，通过serviceMethod.callAdapter.adapt返回了一个service对象的代理对象，在上面的例子里，就是返回了一个GitHubService的代理对象，这样我们就可以通过这样一个对象去调用GitHubService中定义好的各种网络请求，而不用在使用的时候再去决定是POST请求还是GET请求,参数是放在Body里还是params里，因为Retrofit 通过把反射注解和动态代理的巧妙结合，屏蔽了复杂的参数拼接操作，把所有我们需要对OKHttp的进行传递的参数，动态的帮我们传递了，一旦在接口中定义好了使用方式，就可以非常方便的获取到okhttp中最关键的Call了，有了Call我们就可以通过execute或者是enqueue发起网络请求了。</p>
+<p>以上就是对代理模式的分析，总的来说代理模式的结构非常简单；包括抽象主题，委托类，代理类三个核心角色，从大的方向上可以分为静态代理和动态代理两大类；通过静态代理的方式，在开发迭代的过程中，为实现兼容性提供了一种非常友好的实现思路；在日常开发中，如果我们使用的对象之间有着强烈的耦合，可是思考一下是否可以通过代理模式解耦；同时，当我们需要扩展某个类的部分功能时，但又不想去破坏原有的功能或者是根本无法修改时，我们可以考虑代理模式，但也要明白，通过代理模式我们能做的也只能是功能扩展，想要更新委托类中已经实现的内容他是无能为力的。</p>
+<p>动态代理，可以根据运行时的委托类动态的生成代理类，这样就减轻了代理类的负担，避免在编码阶段就具体的委托类再做各种判断了。</p>
+<p>代理模式很简单，也很实用，但不要忘记代理类和委托类需要实现功能的接口或抽象类，不要忽略了这一点。</p>
+<p>参考链接：<a href="https://juejin.im/post/5a4e4725f265da3e2c37e36e" target="_blank" rel="noopener">https://juejin.im/post/5a4e4725f265da3e2c37e36e</a> </p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: 'f001049beca27f93b7ec',
+            clientSecret: 'ff35fc6bcf78d776368077ae1f8c5333a13f4bd0',
+            repo: 'leaderliang.github.io',
+            owner: 'leaderliang',
+            admin: ['leaderliang'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/4492.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/128b.html" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpeg" alt="dev.liang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        dev.liang@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:dev.liang@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/01/">一月 2020<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/08/">八月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/android/">Android<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/java/">Java<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/XiaoMi/">XiaoMi<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/customize-view/">自定义 View<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">Git<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">Hexo<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/java/">Java<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/react-native/">React Native<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/rxjava/">RxJava<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/tools/">Tools<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/benefit-share/">benefit-share<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/wechat/">微信小程序<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/theory/">理论基础<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/manage-money/">理财<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/video/">视频推荐<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/design-patterns/">设计模式<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/interview/">面试<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/leave-a-message" title="给我留言">
+                
+                    <i class="material-icons sidebar-material-icons">email</i>
+                
+                给我留言
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="https://github.com/leaderliang" target="_blank" rel="noopener" title="GitHub">
+                
+                GitHub
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/1829.html" title="VPN 翻墙">
+                
+                VPN 翻墙
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="" title="最近访客">
+                
+                最近访客
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">35</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/2653833512" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/leaderliang" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Dev.liang's Blog
+            
+
+            <!--  不蒜子 统计访问量 -->
+            <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <div>
+                    <!-- 算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量 -->
+                    总阅读次数&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;次&nbsp;
+                    <span class="post-meta-divider">|</span>
+                    <!-- 算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数 -->
+                    &nbsp;您是第&nbsp;<span id="busuanzi_value_site_uv"></span>&nbsp;个到来的小伙伴
+                </div>
+            </div>
+
+ 
+        </div>
+
+   
+        
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <p>
+                Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a>
+            </p>
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+
+    <!-- baidu 站长站长配置 自动推送 -->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+            }
+            else {
+                bp.src = 'https://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?NO+c6mZDGYWZMpqy5qB3yA==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?x1uB3XKBvDVAt1USvsGG8A==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#DC143C'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #DC143C, 0 0 15px #DC143C'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#DC143C',
+        'border-left-color': '#DC143C'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('232tUzVxCgAj7vWMAvwzdX1d-gzGzoHsz', 'uIX1x31R4d6jXqcvcFGUQsE1');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+
+            <!-- Code hight light  代码高亮-->
+            <script src="/js/highlight.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                hljs.initHighlightingOnLoad();    
+                $(document).ready(function() {
+                  $('.code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                  });
+                });
+            </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+        </body>
+    
+</html>

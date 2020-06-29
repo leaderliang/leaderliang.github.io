@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net"/>
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+ 
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Android Coding Style | 
+        
+        Dev.liang&#39;s Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/avatar.jpeg">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="不错的 Android Coding Style，推荐大家在学习和开发过程中可以使用"/>
+    <meta name="keywords" content="Android,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期,Android"/>
+    <meta name="theme-color" content="#0097A7"/>
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?aE/Bb7RXvDHoOY6SKxbobg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Dev.liang&#39;s Blog">
+    <meta name="msapplication-starturl" content="https://leaderliang.coding.me/46bc.html">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Dev.liang&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://leaderliang.coding.me/46bc.html">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Android Coding Style | Dev.liang&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="不错的 Android Coding Style，推荐大家在学习和开发过程中可以使用">
+    <meta property="og:article:tag" content="Android"> 
+
+    
+        <meta property="article:published_time" content="Fri Mar 24 2017 15:58:23 GMT+0800">
+        <meta property="article:modified_time" content="Mon Mar 11 2019 23:48:56 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://leaderliang.coding.me/46bc.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://leaderliang.coding.me/46bc.html",
+    "headline": "Android Coding Style",
+    "datePublished": "Fri Mar 24 2017 15:58:23 GMT+0800",
+    "dateModified": "Mon Mar 11 2019 23:48:56 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dev.liang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpeg"
+        },
+        "description": "Hi, Nice to meet u!"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dev.liang&#39;s Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",AndroidAndroid,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期",
+    "description": "不错的 Android Coding Style，推荐大家在学习和开发过程中可以使用",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+
+    <!-- Bing Background 动态变换图片-->
+    
+        <script type="text/javascript">
+            queue.offer(function(){
+                $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+                $('body.lazy').lazyload();
+            });
+        </script>
+    
+
+    <!-- Custom Head -->
+    
+
+    <!-- hight light 代码高亮 -->
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css" type="text/css">
+
+    <!-- 百度要验证的网站，HTML 标签验证 ，其中一种方式-->
+    <!-- baidu 站长工具验证代码 -->
+    <meta name="baidu-site-verification" content="W3v1HR1PT5" />
+    <!-- google 站长工具验证代码 -->
+    <meta name="google-site-verification" content="xkVTQEMiu9jq9ifY_Lg9DNuXJYnRfq1MVVAeLVna6S4" />
+    
+    <!-- fancybox support 应用 主题下 css js 文件-->
+    
+        <!-- for theme: default is false -->
+        <!-- for page: default is true -->
+        <script>lsloader.load("fancybox_js","/js/fancybox/jquery.fancybox.min.js?1glzq05Z/hboRWID7DvJ1w==", true)</script>
+        <script>lsloader.load("wrap_image_js","/js/wrapImage.js?KyGdrdh3jqfQLRvTgMf4Iw==", true)</script>
+        <style id="fancybox_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("fancybox_css","/js/fancybox/jquery.fancybox.min.css?otQlhCkvZMWCfotnsbOHJg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Table-of-Contents"><span class="post-toc-number">1.</span> <span class="post-toc-text">Table of Contents</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Project-structure-工程结构"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1 Project structure 工程结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-Notice-说明"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1.1 Notice 说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-Resources-directory-structure-资源文件夹结构"><span class="post-toc-number">1.1.1.1.</span> <span class="post-toc-text">1.2 Resources directory structure    资源文件夹结构</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Package-Manner-包管理规范"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2 Package Manner 包管理规范</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-General-通用"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">2.1 General 通用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-App-包结构"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">2.2 App 包结构</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-File-Naming-文件命名"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3 File Naming 文件命名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-Class-files-类文件命名"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">3.1 Class files 类文件命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-Resources-files-资源文件"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">3.2 Resources files 资源文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-Drawable-files"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">3.3 Drawable files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-4-Layout-files-布局文件"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">3.4 Layout files 布局文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Inside-Code-Naming-代码内部命名"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4 Inside Code Naming  代码内部命名</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-Class-Variable-Naming-类变量命名"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">4.1 Class Variable Naming 类变量命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-Class-Method-Naming-类方法命名"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">4.2 Class Method Naming 类方法命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-layout-xml-布局文件变量命名"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">4.3 layout.xml 布局文件变量命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-strings-xml-dimens-xml-colors-xml-xml变量命名"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">4.4 strings.xml  dimens.xml  colors.xml  xml变量命名</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-5-额外注意"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">4.5 额外注意</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-Code-Manner-代码规范"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5  Code Manner 代码规范</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-Constant-内部类解析"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6 Constant 内部类解析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-Git-提交规范"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">7 Git 提交规范</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 22 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Android Coding Style
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpeg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dev.liang</strong>
+        <!-- <span>15:58 3月 24, 2017</span> -->
+        <span>3月 24, 2017</span>        
+    </div>
+
+    <!-- 阅读时长，字数统计 在 scaffolds 目录 page.md 文件中设置了 wordcount 字段，目前为 false，因为样式有点问题
+     if (page.wordcount !== false)   
+     但还是会显示 ？？？？？
+    -->
+     
+    
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB4ElEQVR42u3aQY6EMAwEwPn/p3cfsCJ0J4xYSHFCIwSuHDxx7M/PK64PBgYGBgYGBsa/YXzi6+/z41+O7sdvSGLAwMDYk3GS2krG0RuOnmljwMDA2JkxTojj4A7TYhD6XAwYGBgY+WeS5HsSEAYGBsYXEm5bjp5s8jAwMDAuLWKTUjZfgttqcQwMjAcy2sbAN+5v6G9gYGA8hFGPOAxf3S7QbTMjGBgYj2Lk7clkkzcHyMtaDAyMnRltiPmhf7v5ywcyMDAw9mHkh2g5ph2qyA/mMDAw9mTUaa4Ma2Wk7IL/DQwMjBcx8vs2Xebbx3xxMTAwMObGWJNitU21dScWAwPjpYyVDd8cuC2VMTAwMJIEOgdohzDqgzwMDIxtGHPl6PpoVz7YgYGBgbHSgFw/sFtZLAwMjH0Y15asyRLMbUwxMDB2ZuTDDW1aXCl0MTAwMPLg5pLyXMlaD4phYGBsxlg/JsubkUlCT0gYGBj7MNrE1w5MtG3LC/obGBgYL2XkxWSSTOfeg4GBgdE2BvLQ8wK13QJe0N/AwMDYktGOqLZfGbMxMDAwVhhzvJNAx0kfAwNjS0Y+9LA+MJEf232lFsfAwHggY70xMDd4EW0BMTAwtmc898LAwMDAwMDAuPX6BT4QXpNa4/m8AAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/android/" rel="tag">Android</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/46bc.html" class="leancloud-views_num" data-flag-title="Android Coding Style">
+     &nbsp;次阅读
+</span>
+
+            </li>
+        </a>
+    
+
+    <!-- busuanzi_value_page_pv busuanzi 页面访问记录-->
+    <!-- 
+         -->
+             <!-- Busuanzi Views -->
+
+            <!-- <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+      -->
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="https://service.weibo.com/share/share.php?appkey=&title=Android Coding Style&url=https://leaderliang.coding.me/46bc.html&pic=https://leaderliang.coding.me/img/avatar.jpeg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Android Coding Style&url=https://leaderliang.coding.me/46bc.html&via=dev.liang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://leaderliang.coding.me/46bc.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://leaderliang.coding.me/46bc.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://leaderliang.coding.me/46bc.html&title=Android Coding Style" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="https://connect.qq.com/widget/shareqq/index.html?site=Dev.liang&#39;s Blog&title=Android Coding Style&summary=Dev.liang&#39;s Blog - Android 技术分享、生活记录&pics=https://leaderliang.coding.me/img/avatar.jpeg&url=https://leaderliang.coding.me/46bc.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=https://leaderliang.coding.me/46bc.html&text=Android Coding Style" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>不错的 Android Coding Style，推荐大家在学习和开发过程中可以使用</p>
+<a id="more"></a>
+
+<p>转自 <a href="https://github.com/LoranWong/Android-Code-Style" target="_blank" rel="noopener">https://github.com/LoranWong/Android-Code-Style</a></p>
+<h1 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h1><ul>
+<li><a href="#1-project-structure-工程结构">1 Project structure 工程结构</a><ul>
+<li><a href="#11-notice-说明">1.1 Notice 说明</a>    </li>
+<li><a href="#12-resources-directory-structure资源文件夹结构">1.2 Resources directory structure 资源文件夹结构</a>    </li>
+</ul>
+</li>
+<li><a href="#2-package-manner-包管理规范">2 Package Manner 包管理规范</a><ul>
+<li><a href="#21-general-通用">2.1 General 通用</a></li>
+<li><a href="#22-app-包结构">2.2 App 包结构</a></li>
+</ul>
+</li>
+<li><a href="#3-file-naming-文件命名">3 File Naming 文件命名</a><ul>
+<li><a href="#31-class-files-类文件命名">3.1 Class files 类文件命名</a><ul>
+<li><a href="#32-resources-files-资源文件">3.2 Resources files 资源文件</a></li>
+<li><a href="#33-drawable-files">3.3 Drawable files</a></li>
+<li><a href="#34-layout-files-布局文件">3.4 Layout files 布局文件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-inside-code-naming--代码内部命名">4 Inside Code Naming  代码内部命名</a><ul>
+<li><a href="#41-class-variable-naming-类变量命名">4.1 Class Variable Naming 类变量命名</a></li>
+<li><a href="#42-class-method-naming-类方法命名">4.2 Class Method Naming 类方法命名</a></li>
+<li><a href="#43-layoutxml-布局文件变量命名">4.3 layout.xml 布局文件变量命名</a></li>
+<li><a href="#44-stringsxml--dimensxml--colorsxml--xml变量命名">4.4 strings.xml  dimens.xml  colors.xml  xml变量命名</a></li>
+<li><a href="#45-额外注意">4.5 额外注意</a></li>
+</ul>
+</li>
+<li><a href="#5--code-manner-代码规范">5  Code Manner 代码规范</a></li>
+<li><a href="#6-constant-内部类解析">6 Constant 内部类解析</a></li>
+<li><a href="#7-git-提交规范">7 Git 提交规范</a></li>
+</ul>
+<h2 id="1-Project-structure-工程结构"><a href="#1-Project-structure-工程结构" class="headerlink" title="1 Project structure 工程结构"></a>1 Project structure 工程结构</h2><h3 id="1-1-Notice-说明"><a href="#1-1-Notice-说明" class="headerlink" title="1.1 Notice 说明"></a>1.1 Notice 说明</h3><p>New projects should follow the Android Gradle project structure that is defined on the <a href="http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure" target="_blank" rel="noopener">Android Gradle plugin user guide</a>. The <a href="https://github.com/ribot/android-boilerplate" target="_blank" rel="noopener">BoilerPlate</a> project is a good reference.</p>
+<p>新建工程需要按照最新的Android Gradle的工程结构,在以下定义：<a href="http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure" target="_blank" rel="noopener">Android Gradle plugin user guide</a>. 该工程： <a href="https://github.com/ribot/android-boilerplate" target="_blank" rel="noopener">BoilerPlate</a>  是一个很好的参考材料</p>
+<h4 id="1-2-Resources-directory-structure-资源文件夹结构"><a href="#1-2-Resources-directory-structure-资源文件夹结构" class="headerlink" title="1.2 Resources directory structure    资源文件夹结构"></a>1.2 Resources directory structure    资源文件夹结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">res</span><br><span class="line">    anim</span><br><span class="line">    drawable (xml or selector)</span><br><span class="line">    mipmap	(pixel image)</span><br><span class="line">    layout</span><br><span class="line">    values</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Package-Manner-包管理规范"><a href="#2-Package-Manner-包管理规范" class="headerlink" title="2 Package Manner 包管理规范"></a>2 Package Manner 包管理规范</h2><h3 id="2-1-General-通用"><a href="#2-1-General-通用" class="headerlink" title="2.1 General 通用"></a>2.1 General 通用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">package name ： com.chuxin.[project name]</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-App-包结构"><a href="#2-2-App-包结构" class="headerlink" title="2.2 App 包结构"></a>2.2 App 包结构</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">* app</span><br><span class="line">	* (class) Constant [后续有文件说明]</span><br><span class="line">	* (<span class="class"><span class="keyword">class</span>) <span class="title">Application</span></span></span><br><span class="line"><span class="class">* <span class="title">ui</span></span></span><br><span class="line"><span class="class">	* <span class="title">fragment</span></span></span><br><span class="line"><span class="class">	* <span class="title">activity</span></span></span><br><span class="line"><span class="class">	* <span class="title">base</span></span></span><br><span class="line"><span class="class">	* <span class="title">dialog</span></span></span><br><span class="line"><span class="class">	* <span class="title">adapter</span></span></span><br><span class="line"><span class="class">	* <span class="title">custom</span></span></span><br><span class="line"><span class="class">* <span class="title">service</span></span></span><br><span class="line"><span class="class">	* (<span class="title">which</span> <span class="title">servie</span>) ...</span></span><br><span class="line"><span class="class">* <span class="title">entity</span> </span></span><br><span class="line"><span class="class">	* <span class="title">local</span></span></span><br><span class="line"><span class="class">	* <span class="title">remote</span></span></span><br><span class="line"><span class="class">* <span class="title">manager</span></span></span><br><span class="line"><span class="class">	* (<span class="title">which</span> <span class="title">manager</span>) ...</span></span><br><span class="line"><span class="class">* <span class="title">util</span></span></span><br><span class="line"><span class="class">	* (<span class="title">which</span> <span class="title">util</span>)...</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-File-Naming-文件命名"><a href="#3-File-Naming-文件命名" class="headerlink" title="3 File Naming 文件命名"></a>3 File Naming 文件命名</h2><h3 id="3-1-Class-files-类文件命名"><a href="#3-1-Class-files-类文件命名" class="headerlink" title="3.1 Class files 类文件命名"></a>3.1 Class files 类文件命名</h3><p>Class names are written in <a href="http://en.wikipedia.org/wiki/CamelCase" target="_blank" rel="noopener">UpperCamelCase</a>. </p>
+<p>For classes that extend an Android component, the name of the class should end with the name of the component; for example: <code>SignInActivity</code>, <code>SignInFragment</code>, <code>ImageUploaderService</code>, <code>ChangePasswordDialog</code>.</p>
+<p>For utilties class , the name of the class should start with its usage , and ends with <code>Utils</code>; for example: <code>HttpUtils</code> , <code>ImageUtils</code></p>
+<blockquote>
+<p>类命名方式采用 <code>大驼峰</code> 命名法</p>
+</blockquote>
+<blockquote>
+<p>对于继承自安卓组件的类来说，类名应该以该组件名结尾，例如 ： <code>SignInActivity</code>, <code>SignInFragment</code>, <code>ImageUploaderService</code>, <code>ChangePasswordDialog</code>.</p>
+</blockquote>
+<blockquote>
+<p>对于工具类来说，命名方式应该以其完成功能开始,以 <code>Utils</code> 结束 ，例如 ：<code>HttpUtils</code> , <code>ImageUtils</code>.</p>
+</blockquote>
+<h3 id="3-2-Resources-files-资源文件"><a href="#3-2-Resources-files-资源文件" class="headerlink" title="3.2 Resources files 资源文件"></a>3.2 Resources files 资源文件</h3><p>Resources file names are written in <strong>lowercase_underscore</strong>. </p>
+<blockquote>
+<p>资源文件以<strong>小写加下划线</strong>的方式命名</p>
+</blockquote>
+<h3 id="3-3-Drawable-files"><a href="#3-3-Drawable-files" class="headerlink" title="3.3 Drawable files"></a>3.3 Drawable files</h3><p>Naming conventions for drawables:</p>
+<blockquote>
+<p>drawable 文件的命名规范</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Asset Type</th>
+<th>Prefix 前缀</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Action bar</td>
+<td><code>ab_</code></td>
+<td><code>ab_stacked.9.png</code></td>
+</tr>
+<tr>
+<td>Button</td>
+<td><code>btn_</code></td>
+<td><code>btn_send_pressed.9.png</code></td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td><code>dialog_</code></td>
+<td><code>dialog_top.9.png</code></td>
+</tr>
+<tr>
+<td>Divider</td>
+<td><code>divider_</code></td>
+<td><code>divider_horizontal.9.png</code></td>
+</tr>
+<tr>
+<td>Icon</td>
+<td><code>ic_</code></td>
+<td><code>ic_star.png</code></td>
+</tr>
+<tr>
+<td>Menu</td>
+<td><code>menu_</code></td>
+<td><code>menu_submenu_bg.9.png</code></td>
+</tr>
+<tr>
+<td>Notification</td>
+<td><code>notification_</code></td>
+<td><code>notification_bg.9.png</code></td>
+</tr>
+<tr>
+<td>Tabs</td>
+<td><code>tab_</code></td>
+<td><code>tab_pressed.9.png</code></td>
+</tr>
+</tbody></table>
+<p>Naming conventions for icons:</p>
+<blockquote>
+<p>icons文件的命名规范</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Asset Type</th>
+<th>Prefix 前缀</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Icons</td>
+<td><code>ic_</code></td>
+<td><code>ic_star.png</code></td>
+</tr>
+<tr>
+<td>Launcher icons</td>
+<td><code>ic_launcher</code></td>
+<td><code>ic_launcher_calendar.png</code></td>
+</tr>
+<tr>
+<td>Menu icons and Action Bar icons</td>
+<td><code>ic_menu</code></td>
+<td><code>ic_menu_archive.png</code></td>
+</tr>
+<tr>
+<td>Status bar icons</td>
+<td><code>ic_stat_notify</code></td>
+<td><code>ic_stat_notify_msg.png</code></td>
+</tr>
+<tr>
+<td>Tab icons</td>
+<td><code>ic_tab</code></td>
+<td><code>ic_tab_recent.png</code></td>
+</tr>
+<tr>
+<td>Dialog icons</td>
+<td><code>ic_dialog</code></td>
+<td><code>ic_dialog_info.png</code></td>
+</tr>
+</tbody></table>
+<p>Naming conventions for selector states:</p>
+<blockquote>
+<p>选择器状态文件的命名规范</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Suffix  尾缀</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Normal</td>
+<td><code>_normal</code></td>
+<td><code>btn_order_normal.9.png</code></td>
+</tr>
+<tr>
+<td>Pressed</td>
+<td><code>_pressed</code></td>
+<td><code>btn_order_pressed.9.png</code></td>
+</tr>
+<tr>
+<td>Focused</td>
+<td><code>_focused</code></td>
+<td><code>btn_order_focused.9.png</code></td>
+</tr>
+<tr>
+<td>Disabled</td>
+<td><code>_disabled</code></td>
+<td><code>btn_order_disabled.9.png</code></td>
+</tr>
+<tr>
+<td>Selected</td>
+<td><code>_selected</code></td>
+<td><code>btn_order_selected.9.png</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-4-Layout-files-布局文件"><a href="#3-4-Layout-files-布局文件" class="headerlink" title="3.4 Layout files 布局文件"></a>3.4 Layout files 布局文件</h3><p>Layout files should match the name of the Android components that they are intended for but moving the top level component name to the beginning. For example, if we are creating a layout for the <code>SignInActivity</code>, the name of the layout file should be <code>activity_sign_in.xml</code>.</p>
+<blockquote>
+<p>布局文件的命名需要与他所嵌入的安卓组件匹配，但是将组件名称前移到开始处,例如,我们要创建一个名字为 <code>SignInActivity</code>, 其名字应该为  <code>activity_sign_in.xml</code>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Component 组件</th>
+<th>Class Name</th>
+<th>Layout Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Activity</td>
+<td><code>UserProfileActivity</code></td>
+<td><code>activity_user_profile.xml</code></td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td><code>SignUpFragment</code></td>
+<td><code>fragment_sign_up.xml</code></td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td><code>ChangePasswordDialog</code></td>
+<td><code>dialog_change_password.xml</code></td>
+</tr>
+<tr>
+<td>AdapterView Item</td>
+<td>—</td>
+<td><code>item_person.xml</code></td>
+</tr>
+</tbody></table>
+<h2 id="4-Inside-Code-Naming-代码内部命名"><a href="#4-Inside-Code-Naming-代码内部命名" class="headerlink" title="4 Inside Code Naming  代码内部命名"></a>4 Inside Code Naming  代码内部命名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">Important ： 请不要使用拼音以及数字！！！</span><br><span class="line"></span><br><span class="line">====== 常用缩写 ======</span><br><span class="line"></span><br><span class="line">完整单词 缩写</span><br><span class="line"></span><br><span class="line">A</span><br><span class="line">average ——&gt; avg</span><br><span class="line"></span><br><span class="line">B</span><br><span class="line">back ——&gt; bk</span><br><span class="line">background ——&gt; bg</span><br><span class="line">break ——&gt; brk</span><br><span class="line">buffer ——&gt; buf</span><br><span class="line"></span><br><span class="line">C</span><br><span class="line">color ——&gt; cr(clr)</span><br><span class="line">control ——&gt; ctrl</span><br><span class="line"></span><br><span class="line">D</span><br><span class="line">data ——&gt; dat</span><br><span class="line">delete ——&gt; del</span><br><span class="line">document ——&gt; doc</span><br><span class="line"></span><br><span class="line">E</span><br><span class="line">edit ——&gt; edt</span><br><span class="line">error ——&gt; err</span><br><span class="line">escape ——&gt; esc</span><br><span class="line"></span><br><span class="line">F</span><br><span class="line">flag ——&gt; flg</span><br><span class="line">form ——&gt; frm</span><br><span class="line"></span><br><span class="line">G</span><br><span class="line">grid ——&gt; grd</span><br><span class="line"></span><br><span class="line">I</span><br><span class="line">increment ——&gt; inc</span><br><span class="line">information ——&gt; info</span><br><span class="line">initial ——&gt; init</span><br><span class="line">insert ——&gt; ins</span><br><span class="line">image ——&gt; img</span><br><span class="line"></span><br><span class="line">L</span><br><span class="line">label ——&gt; lab</span><br><span class="line">length ——&gt; len</span><br><span class="line">list ——&gt; lst</span><br><span class="line">library ——&gt; lib</span><br><span class="line"></span><br><span class="line">M</span><br><span class="line">manager ——&gt; mngr(mgr)</span><br><span class="line">message ——&gt; msg</span><br><span class="line"></span><br><span class="line">O</span><br><span class="line">Oracle ——&gt; Ora</span><br><span class="line"></span><br><span class="line">P</span><br><span class="line">panorama ——&gt; pano</span><br><span class="line">password ——&gt; pwd</span><br><span class="line">picture ——&gt; pic</span><br><span class="line">point ——&gt; pt</span><br><span class="line">position ——&gt; pos</span><br><span class="line">print ——&gt; prn</span><br><span class="line">program ——&gt; prg</span><br><span class="line"></span><br><span class="line">S</span><br><span class="line">server ——&gt; srv</span><br><span class="line">source ——&gt; src</span><br><span class="line">statistic ——&gt; stat</span><br><span class="line">string ——&gt; str</span><br><span class="line">Sybase ——&gt; Syb</span><br><span class="line"></span><br><span class="line">T</span><br><span class="line">temp ——&gt; tmp</span><br><span class="line">text ——&gt; txt</span><br><span class="line"></span><br><span class="line">U</span><br><span class="line">user ——&gt; usr</span><br><span class="line"></span><br><span class="line">W</span><br><span class="line">window ——&gt; wnd(win)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="4-1-Class-Variable-Naming-类变量命名"><a href="#4-1-Class-Variable-Naming-类变量命名" class="headerlink" title="4.1 Class Variable Naming 类变量命名"></a>4.1 Class Variable Naming 类变量命名</h3><ul>
+<li>公有变量按 <code>小驼峰</code> 法命名</li>
+<li>私有 &amp; 非静态成员变量以 <code>m</code> 开头</li>
+<li>私有 &amp; 静态成员变量以 <code>s</code> 开头</li>
+<li>常量以大写字母和下划线 <code>_</code> 组成</li>
+<li>尽量使用 <code>功能/描述 + 类型</code> 的模式 ,如 <code>mNameTextView</code></li>
+<li>类中变量的组件类型请不要使用缩写</li>
+<li>注意不要使用 <code>aa</code> <code>bb</code> <code>cc3</code> 这种变态的命名方式 ！！</li>
+<li>类变量过多时请 <code>分块摆放</code> 并且 <code>写好注释</code></li>
+<li><code>接口类</code> 请直接定义在类的最后</li>
+</ul>
+<p>Example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="comment">//静态常量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SOME_CONSTANT = <span class="number">42</span>;</span><br><span class="line">    <span class="comment">//公有变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> publicField;</span><br><span class="line">    <span class="comment">//私有静态变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MyClass sSingleton;</span><br><span class="line">    <span class="comment">//默认变量</span></span><br><span class="line">    <span class="keyword">int</span> mPackagePrivate;</span><br><span class="line">    <span class="comment">//私有变量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mPrivate;</span><br><span class="line">    <span class="comment">//继承型变量</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mProtected;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Class-Method-Naming-类方法命名"><a href="#4-2-Class-Method-Naming-类方法命名" class="headerlink" title="4.2 Class Method Naming 类方法命名"></a>4.2 Class Method Naming 类方法命名</h3><ul>
+<li><p>类方法采用 <code>小驼峰</code> 命名法</p>
+</li>
+<li><p>根据函数所完成功能命名 ， 如 <code>changView()</code></p>
+</li>
+<li><p>在函数头写对于函数功能、参数和返回值的注释，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取两个数中最大的一个</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value1 参与比较的第一个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value2 参与比较的第二个数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 两个参数中最大的一个数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> value1, <span class="keyword">int</span> value2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (value1 &gt; value2) ? value1 : value2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一个函数请尽量保持在 <code>50行</code> 之内 ！！</p>
+</li>
+</ul>
+<h3 id="4-3-layout-xml-布局文件变量命名"><a href="#4-3-layout-xml-布局文件变量命名" class="headerlink" title="4.3 layout.xml 布局文件变量命名"></a>4.3 layout.xml 布局文件变量命名</h3><ul>
+<li><code>id</code> 以 <code>所在组件_类型_命名</code> 的模式，例如： <code>@+id/main_tv_name</code> 、 <code>@id/chat_btn_send</code></li>
+<li>布局多处重用的请使用 <code>&lt;include&gt;</code> 标签</li>
+<li>所有文本请定义在 <code>strings.xml</code> 中 , 如 <code>@string/app_name</code></li>
+<li>重用dp请定义在 <code>dimens.xml</code> 中 , 如  <code>@dimen/entry_item_height</code></li>
+<li>对应组件缩写表：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Component 组件</th>
+<th>Abbreviation 缩写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fragment</td>
+<td><code>fgm</code></td>
+</tr>
+<tr>
+<td>TextView</td>
+<td><code>tv</code></td>
+</tr>
+<tr>
+<td>ImageView</td>
+<td><code>iv</code></td>
+</tr>
+<tr>
+<td>Button</td>
+<td><code>btn</code></td>
+</tr>
+<tr>
+<td>EditText</td>
+<td><code>et</code></td>
+</tr>
+<tr>
+<td>LinearLayout</td>
+<td><code>ll</code></td>
+</tr>
+<tr>
+<td>ReleativeLayout</td>
+<td><code>rl</code></td>
+</tr>
+<tr>
+<td>normally : FirstSecond</td>
+<td><code>fs</code></td>
+</tr>
+</tbody></table>
+<h3 id="4-4-strings-xml-dimens-xml-colors-xml-xml变量命名"><a href="#4-4-strings-xml-dimens-xml-colors-xml-xml变量命名" class="headerlink" title="4.4 strings.xml  dimens.xml  colors.xml  xml变量命名"></a>4.4 strings.xml  dimens.xml  colors.xml  xml变量命名</h3><blockquote>
+<p>  遵循 <code>完整性</code> <code>规范性</code> <code>有序性</code>原则</p>
+</blockquote>
+<ul>
+<li><strong>分块并注释</strong>, 将 使用在不同的 <code>Activity</code> 或者 <code>Fragment</code> 中的 <code>xml</code> 变量 进行分块</li>
+<li>命名举例 ：<br><code>login_error_tips</code>  <strong>in</strong>  <code>strings.xml</code><br><code>login_error_tips_height</code> <strong>in</strong> <code>dimens.xml</code><br><code>login_error_tips_bg</code> <strong>in</strong> <code>colors.xml</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Prefix 前缀</th>
+<th>Description 描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>error_</code></td>
+<td>An error message</td>
+</tr>
+<tr>
+<td><code>msg_</code></td>
+<td>A regular information message</td>
+</tr>
+<tr>
+<td><code>title_</code></td>
+<td>A title, i.e. a dialog title</td>
+</tr>
+<tr>
+<td><code>action_</code></td>
+<td>An action such as “Save” or “Create”</td>
+</tr>
+</tbody></table>
+<h3 id="4-5-额外注意"><a href="#4-5-额外注意" class="headerlink" title="4.5 额外注意"></a>4.5 额外注意</h3><table>
+<thead>
+<tr>
+<th>Good</th>
+<th>Bad</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>XmlHttpRequest</code> <i class="icon-thumbs-up"></i></td>
+<td><code>XMLHTTPRequest</code><i class="icon-thumbs-down"></i></td>
+</tr>
+<tr>
+<td><code>getCustomerId</code>  <i class="icon-thumbs-up"></i></td>
+<td><code>getCustomerID</code><i class="icon-thumbs-down"></i></td>
+</tr>
+<tr>
+<td><code>String url</code> <i class="icon-thumbs-up"></i></td>
+<td><code>String URL</code><i class="icon-thumbs-down"></i></td>
+</tr>
+<tr>
+<td><code>long id</code> <i class="icon-thumbs-up"></i></td>
+<td><code>long ID</code><i class="icon-thumbs-down"></i></td>
+</tr>
+</tbody></table>
+<h2 id="5-Code-Manner-代码规范"><a href="#5-Code-Manner-代码规范" class="headerlink" title="5  Code Manner 代码规范"></a>5  Code Manner 代码规范</h2><p>This is <strong>good</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition)&#123;</span><br><span class="line">    body();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is <strong>bad</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) body();  <span class="comment">// bad!</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>This is <strong>good</strong>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:id</span>=<span class="string">"@+id/text_view_profile"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>This is <strong>bad</strong> :</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Don't do this! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/text_view_profile"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TextView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="6-Constant-内部类解析"><a href="#6-Constant-内部类解析" class="headerlink" title="6 Constant 内部类解析"></a>6 Constant 内部类解析</h2><p><code>Constant</code> </p>
+<pre><code>*   `CODE`    --&gt; `request_code`，`app_key` 等
+*   `CONFIG`  --&gt; 项目的配置变量, 偏向于调试开发使用，如：`IS_DEBUG`, `SHOW_LOG`
+*   `URL`  --&gt; 网络地址相关
+*   `COUNT`   --&gt; 某些约定的数字，如一次刷新显示的条目数量。__一定要有注释__
+*   `PATH`    --&gt; 路径信息，SD卡路径等
+*   `KEY`    --&gt; 键值对的键的信息,如 `Bundle` 中的键</code></pre><h2 id="7-Git-提交规范"><a href="#7-Git-提交规范" class="headerlink" title="7 Git 提交规范"></a>7 Git 提交规范</h2><p><strong>基本要求</strong></p>
+<ul>
+<li>分段</li>
+</ul>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(Git test) Modify CircleImageView to show rounded rectangle</span><br><span class="line"></span><br><span class="line">https://trello.com/c/M7u5h0QA</span><br><span class="line"></span><br><span class="line">The original function can be used normally,</span><br><span class="line">To show rounded rectangle, you need add param &quot;bao:round&quot; to XML file,</span><br><span class="line">it&apos;s value is the rounded rectangle&apos;s corner radius.</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一行</strong>: 作为标题，这在 Git 中就会做为默认显示的部分，如图中深黑色字：<br>    <img src="http://t1.qpic.cn/mblogpic/2da122c89f961ea51a7a/2000.jpg" alt="提交信息的显示"></p>
+<p><strong>第二行</strong>: 留空！因为通常在设置了邮件提醒的 Git 系统中，第二行的空行是作为分隔标题和正文的存在。</p>
+<p><strong>第三行</strong>: 开始就是详细说明了。可以加上对此次修改的问题的链接，或者描述。如果有用到 <code>issue</code> 的话可以写上 <code>issue #[issue id]</code>，或者附上 <strong>trello</strong> 的链接。</p>
+<p><del>建议全部用英文写，其他字符有乱码的可能。</del> 并不会乱码</p>
+<ul>
+<li>粒度</li>
+</ul>
+<blockquote>
+<p>说的是做的修改的粒度。如果你一天做了很多的修改，但是就只提交了一次，那么你的粒度就有点大了。</p>
+<p>这样在你描述你的行为的时候就会显得模糊，如果你详细描述的话，提交信息会变得长篇大论。</p>
+<p>但也不要做一点提交一点，这样粒度就会变得太小，会导致一天到晚在写提交信息，没有必要。</p>
+<p>在我看来，这个事情真的只能凭感觉提交，用经验来做判断。因为一个BUG可能可大可小，大的话，你就得分割修复。</p>
+<p>如果小，那么就一次提交修复就可。</p>
+<p>粒度的掌握绝对会影响你的提交信息，因为二者是一一对应的。</p>
+</blockquote>
+<ul>
+<li>宽度</li>
+</ul>
+<blockquote>
+<p>是的，是宽度，不是长度。</p>
+<p>和代码一样，如果你平时注意的话，就不要让你的代码在一行上超过80，不然谁读代码都不好受，包括你自己。</p>
+<p>所以提交信息的宽度也有限制。</p>
+<p>分别是标题不要超过50，内容部分不要超过70。</p>
+</blockquote>
+<hr>
+<p><strong>大概大家都会的没什么用的小Tips：</strong></p>
+<ul>
+<li>使用 <code>git commit</code> 命令并进入 <code>Vim</code> 编辑提交信息，写完后按 <code>Esc</code> 确保不在编辑状态，然后输入 <code>:wq</code> 回车退出并提交。</li>
+<li>直接使用 <code>Android Studio</code> 自带的 VCS 也很方便。</li>
+</ul>
+<hr>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="http://segmentfault.com/a/1190000002583308" target="_blank" rel="noopener">Git - 如何写好你的提交信息？</a></li>
+<li><a href="https://ruby-china.org/topics/15737" target="_blank" rel="noopener">写出好的 commit message</a></li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: 'f001049beca27f93b7ec',
+            clientSecret: 'ff35fc6bcf78d776368077ae1f8c5333a13f4bd0',
+            repo: 'leaderliang.github.io',
+            owner: 'leaderliang',
+            admin: ['leaderliang'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/3eeb.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/96e6.html" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpeg" alt="dev.liang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        dev.liang@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:dev.liang@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/01/">一月 2020<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/08/">八月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/android/">Android<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/java/">Java<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/XiaoMi/">XiaoMi<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/customize-view/">自定义 View<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">Git<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">Hexo<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/java/">Java<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/react-native/">React Native<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/rxjava/">RxJava<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/tools/">Tools<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/benefit-share/">benefit-share<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/wechat/">微信小程序<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/theory/">理论基础<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/manage-money/">理财<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/video/">视频推荐<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/design-patterns/">设计模式<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/interview/">面试<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/leave-a-message" title="给我留言">
+                
+                    <i class="material-icons sidebar-material-icons">email</i>
+                
+                给我留言
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="https://github.com/leaderliang" target="_blank" rel="noopener" title="GitHub">
+                
+                GitHub
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/1829.html" title="VPN 翻墙">
+                
+                VPN 翻墙
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="" title="最近访客">
+                
+                最近访客
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">35</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/2653833512" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/leaderliang" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Dev.liang's Blog
+            
+
+            <!--  不蒜子 统计访问量 -->
+            <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <div>
+                    <!-- 算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量 -->
+                    总阅读次数&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;次&nbsp;
+                    <span class="post-meta-divider">|</span>
+                    <!-- 算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数 -->
+                    &nbsp;您是第&nbsp;<span id="busuanzi_value_site_uv"></span>&nbsp;个到来的小伙伴
+                </div>
+            </div>
+
+ 
+        </div>
+
+   
+        
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <p>
+                Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a>
+            </p>
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+
+    <!-- baidu 站长站长配置 自动推送 -->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+            }
+            else {
+                bp.src = 'https://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?NO+c6mZDGYWZMpqy5qB3yA==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?x1uB3XKBvDVAt1USvsGG8A==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#DC143C'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #DC143C, 0 0 15px #DC143C'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#DC143C',
+        'border-left-color': '#DC143C'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('232tUzVxCgAj7vWMAvwzdX1d-gzGzoHsz', 'uIX1x31R4d6jXqcvcFGUQsE1');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+
+            <!-- Code hight light  代码高亮-->
+            <script src="/js/highlight.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                hljs.initHighlightingOnLoad();    
+                $(document).ready(function() {
+                  $('.code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                  });
+                });
+            </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+        </body>
+    
+</html>

@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net"/>
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+ 
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Fragment 生命周期浅析及常见问题整理 | 
+        
+        Dev.liang&#39;s Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/avatar.jpeg">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="
+平时项目中少不了 Fragment 的使用，也会遇到一些奇怪的问题，今天抽时间对 Fragment 的生命周期，奇葩问题进行一个稍微全面的总结"/>
+    <meta name="keywords" content="Android,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期,Android,Fragment"/>
+    <meta name="theme-color" content="#0097A7"/>
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?aE/Bb7RXvDHoOY6SKxbobg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Dev.liang&#39;s Blog">
+    <meta name="msapplication-starturl" content="https://leaderliang.coding.me/4492.html">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Dev.liang&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://leaderliang.coding.me/4492.html">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Fragment 生命周期浅析及常见问题整理 | Dev.liang&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="
+平时项目中少不了 Fragment 的使用，也会遇到一些奇怪的问题，今天抽时间对 Fragment 的生命周期，奇葩问题进行一个稍微全面的总结">
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Fragment"> 
+
+    
+        <meta property="article:published_time" content="Tue Apr 02 2019 17:17:23 GMT+0800">
+        <meta property="article:modified_time" content="Tue Apr 02 2019 23:59:01 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://leaderliang.coding.me/4492.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://leaderliang.coding.me/4492.html",
+    "headline": "Fragment 生命周期浅析及常见问题整理",
+    "datePublished": "Tue Apr 02 2019 17:17:23 GMT+0800",
+    "dateModified": "Tue Apr 02 2019 23:59:01 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dev.liang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpeg"
+        },
+        "description": "Hi, Nice to meet u!"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dev.liang&#39;s Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Android,FragmentAndroid,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期",
+    "description": "
+平时项目中少不了 Fragment 的使用，也会遇到一些奇怪的问题，今天抽时间对 Fragment 的生命周期，奇葩问题进行一个稍微全面的总结",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+
+    <!-- Bing Background 动态变换图片-->
+    
+        <script type="text/javascript">
+            queue.offer(function(){
+                $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+                $('body.lazy').lazyload();
+            });
+        </script>
+    
+
+    <!-- Custom Head -->
+    
+
+    <!-- hight light 代码高亮 -->
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css" type="text/css">
+
+    <!-- 百度要验证的网站，HTML 标签验证 ，其中一种方式-->
+    <!-- baidu 站长工具验证代码 -->
+    <meta name="baidu-site-verification" content="W3v1HR1PT5" />
+    <!-- google 站长工具验证代码 -->
+    <meta name="google-site-verification" content="xkVTQEMiu9jq9ifY_Lg9DNuXJYnRfq1MVVAeLVna6S4" />
+    
+    <!-- fancybox support 应用 主题下 css js 文件-->
+    
+        <!-- for theme: default is false -->
+        <!-- for page: default is true -->
+        <script>lsloader.load("fancybox_js","/js/fancybox/jquery.fancybox.min.js?1glzq05Z/hboRWID7DvJ1w==", true)</script>
+        <script>lsloader.load("wrap_image_js","/js/wrapImage.js?KyGdrdh3jqfQLRvTgMf4Iw==", true)</script>
+        <style id="fancybox_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("fancybox_css","/js/fancybox/jquery.fancybox.min.css?otQlhCkvZMWCfotnsbOHJg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Fragment-各个生命周期作用和拓展"><span class="post-toc-number">1.</span> <span class="post-toc-text">Fragment 各个生命周期作用和拓展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fragment-各个生命周期介绍"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Fragment 各个生命周期介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onAttach"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">onAttach()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onCreate"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">onCreate()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onCreateView"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">onCreateView()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onActivityCreated"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">onActivityCreated()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onSaveInstanceState"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">onSaveInstanceState()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onStart"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">onStart()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onResume"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">onResume()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onPause"><span class="post-toc-number">1.1.8.</span> <span class="post-toc-text">onPause()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onStop"><span class="post-toc-number">1.1.9.</span> <span class="post-toc-text">onStop()</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#—————————–-以上几个跟-Activity-中对应方法类似-end-—————————"><span class="post-toc-number">1.1.9.0.1.</span> <span class="post-toc-text">—————————– 以上几个跟 Activity 中对应方法类似 end —————————-</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onDestroyView"><span class="post-toc-number">1.1.10.</span> <span class="post-toc-text">onDestroyView()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onDestroy"><span class="post-toc-number">1.1.11.</span> <span class="post-toc-text">onDestroy()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onDetach"><span class="post-toc-number">1.1.12.</span> <span class="post-toc-text">onDetach()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setUserVisibleHint"><span class="post-toc-number">1.1.13.</span> <span class="post-toc-text">setUserVisibleHint()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#onViewCreated"><span class="post-toc-number">1.1.14.</span> <span class="post-toc-text">onViewCreated()</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Fragment-相关奇葩问题整理"><span class="post-toc-number">2.</span> <span class="post-toc-text">Fragment 相关奇葩问题整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#onCreateView（）调用多次？"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">onCreateView（）调用多次？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#setUserVisibleHint-不被调用？"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">setUserVisibleHint() 不被调用？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FragmentStatePagerAdapter-和-FragmentPagerAdapter-区别？"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">FragmentStatePagerAdapter 和 FragmentPagerAdapter 区别？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FragmentPagerAdapter-ViewPager-的注意事项"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">FragmentPagerAdapter+ViewPager 的注意事项 ?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#未完待更新…"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">未完待更新…</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 22 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Fragment 生命周期浅析及常见问题整理
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpeg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dev.liang</strong>
+        <!-- <span>17:17 4月 02, 2019</span> -->
+        <span>4月 02, 2019</span>        
+    </div>
+
+    <!-- 阅读时长，字数统计 在 scaffolds 目录 page.md 文件中设置了 wordcount 字段，目前为 false，因为样式有点问题
+     if (page.wordcount !== false)   
+     但还是会显示 ？？？？？
+    -->
+     
+    
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB9ElEQVR42u3aSZLCMAwFUO5/6e4DUAlfchhiPa+oIoCfF8IaHn9brAcGBgYGBgYGxs8wHvE6/LqnZ85fHz1f3QMGBsY0xovQdvDM4Q/E+JU9YGBgzGScB8TDrztFngf33h4wMDAwVn7mPAQnB4GBgYHx7oCbBNkb/G9gYGD8MCNPOM/T1GrY/UIujoGBcUNGXpR/3+uP9jcwMDBuxSiPOASBslee++jMCAYGxq0YeeDrFf2TrTeHPDAwMIYxehfBpChWvfwVGqIYGBjDGPkmcny1oFZ+EgMDYxgjv5AlDYD8Cpi8e3i4GBgYwxh5+axaVusF3wtycQwMjO0Y1VHUKvj8sxfn4hgYGJsyeqWx6qdWEuPC/wYGBsZ2jLzs1Su65U2C6nAGBgbGHEa1eZlfAfNr38VJLAYGxhhGsqHCNa41bPHiKDEwMIYxqhe43hFUW5tLuTgGBsamjJV2Y76tfJhsadgCAwNja0Z+KbwWU26mYmBgjGFUV6/1uN42wMDAmMxYGa3otQGSstoFjQEMDIztGHmampfv8+Cbl/8wMDAwqq3Ea5sKb2kMYGBgDGbkZf081JYPAgMDAyMfzyoOYayn0BgYGJMZ+ThF7wiqDc7msAUGBsamjOoARLk0FjcM8iPGwMCYw7jvwsDAwMDAwMD46voH8wPKJwenSy0AAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/android/" rel="tag">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/fragment/" rel="tag">Fragment</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/4492.html" class="leancloud-views_num" data-flag-title="Fragment 生命周期浅析及常见问题整理">
+     &nbsp;次阅读
+</span>
+
+            </li>
+        </a>
+    
+
+    <!-- busuanzi_value_page_pv busuanzi 页面访问记录-->
+    <!-- 
+         -->
+             <!-- Busuanzi Views -->
+
+            <!-- <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+      -->
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="https://service.weibo.com/share/share.php?appkey=&title=Fragment 生命周期浅析及常见问题整理&url=https://leaderliang.coding.me/4492.html&pic=https://leaderliang.coding.me/img/avatar.jpeg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Fragment 生命周期浅析及常见问题整理&url=https://leaderliang.coding.me/4492.html&via=dev.liang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://leaderliang.coding.me/4492.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://leaderliang.coding.me/4492.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://leaderliang.coding.me/4492.html&title=Fragment 生命周期浅析及常见问题整理" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="https://connect.qq.com/widget/shareqq/index.html?site=Dev.liang&#39;s Blog&title=Fragment 生命周期浅析及常见问题整理&summary=Dev.liang&#39;s Blog - Android 技术分享、生活记录&pics=https://leaderliang.coding.me/img/avatar.jpeg&url=https://leaderliang.coding.me/4492.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=https://leaderliang.coding.me/4492.html&text=Fragment 生命周期浅析及常见问题整理" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>平时项目中少不了 Fragment 的使用，也会遇到一些奇怪的问题，今天抽时间对 Fragment 的生命周期，奇葩问题进行一个稍微全面的总结 <a id="more"></a>。<a href="https://developer.android.com/guide/components/fragments?hl=zh-CN" target="_blank" rel="noopener"><strong>官方指南</strong></a></p>
+</blockquote>
+<h2 id="Fragment-各个生命周期作用和拓展"><a href="#Fragment-各个生命周期作用和拓展" class="headerlink" title="Fragment 各个生命周期作用和拓展"></a>Fragment 各个生命周期作用和拓展</h2><h3 id="Fragment-各个生命周期介绍"><a href="#Fragment-各个生命周期介绍" class="headerlink" title="Fragment 各个生命周期介绍"></a>Fragment 各个生命周期介绍</h3><p>先上两张官方图，左侧 Activity 和 Fragment 生命周期对比，右侧是 Fragment 生命周期。</p>
+<div align="center">
+    <img alt="activity and fragment lifecycle" class="post-image-center" src="./img/blog/android/activity_fragment_lifecycle.png" height="auto" width="auto" ><img alt="fragment_lifecycle" class="post-image-center" src="./img/blog/android/fragment_lifecycle.png" height="auto" width="auto" >
+</div>
+
+
+<h4 id="onAttach"><a href="#onAttach" class="headerlink" title="onAttach()"></a><strong>onAttach()</strong></h4><p>执行该方法时，Fragment 与 Activity 已经完成绑定，onAttach (Activity activity) 该方法有一个 Activity 类型的参数，代表绑定的 Activity，这时候你可以根据需要进行 mActivity = activity 赋值操作。</p>
+<blockquote>
+<p>拓展：Fragment 关联到 Activity 时的回调，此时 Activity 已经与 Fragment 关联，通过 Context 向下转型，就可以与 Activity 通信当然也可以使用 getActivity(),前提是这个 fragment 已经和宿主的 activity 关联，并且没有脱离。onAttach 只调用一次。</p>
+</blockquote>
+<h4 id="onCreate"><a href="#onCreate" class="headerlink" title="onCreate()"></a><strong>onCreate()</strong></h4><p>初始化Fragment。可通过参数 savedInstanceState 获取之前保存的值。</p>
+<blockquote>
+<p>拓展：系统创建 Fragment 的时候回调，介于 onAttach() 和 onCreateView() 之间，一般用于初始化一些数据，需要注意的是，此时 Activity 还在创建中，因此不能在执行一些跟 Activity UI 相关的操作，否则会出现一些难以预料的问题，如NullPointException 如果要对 Activity 上的 UI 进行操作，可在 onActivityCreated() 中操作。</p>
+</blockquote>
+<h4 id="onCreateView"><a href="#onCreateView" class="headerlink" title="onCreateView()"></a><strong>onCreateView()</strong></h4><p>初始化 Fragment 的布局。加载布局和 findViewById 的操作通常在此函数内完成，但是不建议执行耗时的操作，比如读取数据库数据列表。</p>
+<blockquote>
+<p>拓展：创建 Fragment 需要显示的 View，默认返回 null。当返回的 View 不为 null 时，View 被销毁时会调用onDestroyView()，此处应该只进行布局的初始化，而不应该执行耗时操作，如网络请求、数据库读取等。另外有时候 onCreateView 会被多次调用, 可以把初始化布局、view 的过程放在 onCreate 中，onCreateView 中直接 return View 对象即可。</p>
+</blockquote>
+<h4 id="onActivityCreated"><a href="#onActivityCreated" class="headerlink" title="onActivityCreated()"></a><strong>onActivityCreated()</strong></h4><p>执行该方法时，与 Fragment 绑定的 Activity 的 onCreate 方法已经执行完成并返回，在该方法内可以进行与 Activity 交互的 UI 操作，所以在该方法之前 Activity 的 onCreate 方法并未执行完成，如果提前进行交互操作，会引发空指针异常。</p>
+<blockquote>
+<p>拓展：当 Activity 执行完 onCreate() 方法后会被调用，此时可以执行与 Activity 相关的 UI 操作</p>
+</blockquote>
+<h4 id="onSaveInstanceState"><a href="#onSaveInstanceState" class="headerlink" title="onSaveInstanceState()"></a><strong>onSaveInstanceState()</strong></h4><p>保存当前Fragment的状态。该方法会自动保存Fragment的状态，比如EditText键入的文本，即使Fragment被回收又重新创建，一样能恢复EditText之前键入的文本。</p>
+<br>
+###### ----------------------------- 以下几个跟 Activity 中对应方法类似 start ---------------------------- 
+
+<h4 id="onStart"><a href="#onStart" class="headerlink" title="onStart()"></a><strong>onStart()</strong></h4><p>执行该方法时，Fragment 由不可见变为可见状态。</p>
+<h4 id="onResume"><a href="#onResume" class="headerlink" title="onResume()"></a><strong>onResume()</strong></h4><p>执行该方法时，Fragment 处于活动状态，用户可与之交互。</p>
+<h4 id="onPause"><a href="#onPause" class="headerlink" title="onPause()"></a><strong>onPause()</strong></h4><p>执行该方法时，Fragment 处于暂停状态，但依然可见，用户不能与之交互。</p>
+<h4 id="onStop"><a href="#onStop" class="headerlink" title="onStop()"></a><strong>onStop()</strong></h4><p>执行该方法时，Fragment 完全不可见。</p>
+<h6 id="—————————–-以上几个跟-Activity-中对应方法类似-end-—————————"><a href="#—————————–-以上几个跟-Activity-中对应方法类似-end-—————————" class="headerlink" title="—————————– 以上几个跟 Activity 中对应方法类似 end —————————-"></a>—————————– 以上几个跟 Activity 中对应方法类似 end —————————-</h6><br>
+
+<h4 id="onDestroyView"><a href="#onDestroyView" class="headerlink" title="onDestroyView()"></a><strong>onDestroyView()</strong></h4><p>销毁与 Fragment 有关的视图，但未与 Activity 解除绑定，依然可以通过 onCreateView 方法重新创建视图。通常在ViewPager + Fragment 结合使用时会调用此方法。</p>
+<blockquote>
+<p>拓展：表示销毁 Fragment 相关联的 UI 布局，清除所有跟视图相关的资源。不一定在 Activity 的 onDestroy() 方法中调用。</p>
+</blockquote>
+<h4 id="onDestroy"><a href="#onDestroy" class="headerlink" title="onDestroy()"></a><strong>onDestroy()</strong></h4><p>销毁 Fragment。通常按 Back 键退出或者 Fragment 被回收时调用此方法。</p>
+<blockquote>
+<p>拓展：销毁 Fragment 对象的时候调用，一般是调用 Activity 的 onDestroy() 的时候执行。</p>
+</blockquote>
+<h4 id="onDetach"><a href="#onDetach" class="headerlink" title="onDetach()"></a><strong>onDetach()</strong></h4><p>解除与 Activity 的绑定（解除 Fragment 与 Activity 的关联）。在 onDestroy 方法之后调用。</p>
+<h4 id="setUserVisibleHint"><a href="#setUserVisibleHint" class="headerlink" title="setUserVisibleHint()"></a><strong>setUserVisibleHint()</strong></h4><p>设置Fragment可见或者不可见时会调用此方法。在该方法里面可以通过调用 getUserVisibleHint() 获得 Fragment 的状态是可见还是不可见的，如果可见则进行懒加载操作。</p>
+<blockquote>
+<p>拓展：当 Fragment 与 ViewPager 结合使用时，切换 Pager 时回调方法。</p>
+</blockquote>
+<br>
+### ViewPager 切换 Fragment 相关生命周期
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">// Fragment 初始化创建</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: setUserVisibleHint</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onAttach</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onCreate</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onCreateView</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onActivityCreated</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStart</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Fragment变为不可见状态</span><br><span class="line">// 屏幕锁屏、回到桌面、被Activity完全覆盖 经历一样的生命周期</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onPause</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onSaveInstanceState</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStop</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 屏幕解锁</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStart</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 切换到其他 Fragment</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onPause</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStop</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDestroyView</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 切换回本身的 Fragment</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onCreateView</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onActivityCreated</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStart</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 回到应用</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStart</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Fragment 退出（注意退出不会调用onSaveInstanceState方法，因为是人为退出，没有必要再保存数据）</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onPause</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStop</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDestroyView</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDestroy</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDetach</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Fragment变为部分可见状态（打开Dialog样式的Activity）</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onPause</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onSaveInstanceState</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Fragment 由不可见变为活动状态</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStart</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Fragment由部分可见变为活动状态</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Fragment 被回收又重新创建</span><br><span class="line">// 被回收执行</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onPause</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onSaveInstanceState</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStop</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDestroyView</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDestroy</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onDetach</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 重新创建执行</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onAttach</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onCreate</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onCreateView</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onActivityCreated</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onStart</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: onResume</span><br><span class="line">04-02 21:24:48.240 2049-2448/? I/Fragment Lifecycle: setUserVisibleHint</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 横竖屏切换：与Fragment被回收又重新创建一样。</span><br></pre></td></tr></table></figure>
+<br>
+### **补充**
+
+<p>onAttach() 和 onCreate() 只在 Fragment 与 Activity 第一次关联时调用。</p>
+<p>onDestroy() 和 onDetach() 只在 Fragment 的宿主 Activity 销毁时才会被调用。</p>
+<p>根据前 2 点，将 Fragment 通过 addToBackStack() 只涉及 onCreateView() 和 onDestroyView() 这之间的生命周期。add() 和 replace() 不会对 Fragment 的生命周期产生影响，但 add() 方法会造成 Fragment 叠加显示。</p>
+<p>Fragment 与 ViewPager 结合使用时的生命周期与第 3 点相似。</p>
+<p>通过 hide() 、show() 来隐藏、显示Fragment，此时 Fragment 只改变了可见性，并不涉及生命周期的改变。</p>
+<p>不要在 Fragment 的 onCreate() 方法中操作宿主 Activity 的 UI。因为无法保证此时宿主 Activity 的 UI 已经完全初始化，某些情况下也是可以确保宿主 Activity 已经初始化完成的。</p>
+<h4 id="onViewCreated"><a href="#onViewCreated" class="headerlink" title="onViewCreated()"></a>onViewCreated()</h4><blockquote>
+<p>该方法在 onCreateView() 之后会被立即执行，此时可以对 View 对象进行赋值，onCreateView 是创建的时候调用，onViewCreated 是在 onCreateView 后被触发的事件，前后关系。</p>
+</blockquote>
+<p>Fragment 中有几个比较相似的生命周期方法 onCreate、onCreatView、onViewCreated，需要仔细区分一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Called immediately after onCreateView(android.view.LayoutInflater, android.view.ViewGroup, </span><br><span class="line"> * android.os.Bundle) has returned, but before any saved state has been restored in to the view. </span><br><span class="line"> * This gives subclasses a chance to initialize themselves once they know their view hierarchy has</span><br><span class="line"> * been completely created. The fragment&apos;s view hierarchy is not however attached to its parent at </span><br><span class="line"> * this point.</span><br><span class="line"> */</span><br><span class="line">void onViewCreated(View view, Bundle savedInstanceState)</span><br></pre></td></tr></table></figure>
+<p>官方的一段介绍， onCreateView 是创建的时候调用，onViewCreated 会在 onCreateView 被触发后调用，前后关系；也是 fragment 中的 onCreateView 和 onViewCreated 的区别和联系。另外 onStart 运行时间位于 onViewCreated 之后。</p>
+<h2 id="Fragment-相关奇葩问题整理"><a href="#Fragment-相关奇葩问题整理" class="headerlink" title="Fragment 相关奇葩问题整理"></a>Fragment 相关奇葩问题整理</h2><h3 id="onCreateView（）调用多次？"><a href="#onCreateView（）调用多次？" class="headerlink" title="onCreateView（）调用多次？"></a>onCreateView（）调用多次？</h3><p>遇到在滑动 Fragment 的过程中不断重复调用 onCreateView 的问题，导致控件不断初始化，影响程序的整体逻辑。<br>可以尝试把初始化操作写在 OnCreate() 中，是为了控件只初始化一次。oncreateView 会被多次执行。</p>
+<p>另一种方案：</p>
+<pre><code>private View mView;
+
+@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    if (null != mView){
+        ViewGroup parent = (ViewGroup) mView.getParent();
+        if (null != parent) {
+            parent.removeView(mView);
+        }
+    }else {
+        mView = inflater.inflate(R.layout.main_layout, container, false);
+        // 初始化 View， findViewById();
+    }
+    return mView;
+}</code></pre><h3 id="setUserVisibleHint-不被调用？"><a href="#setUserVisibleHint-不被调用？" class="headerlink" title="setUserVisibleHint() 不被调用？"></a>setUserVisibleHint() 不被调用？</h3><p>通常情况下都是因为继承的是 PagerAdapter 而不是 FragmentPagerAdapter 造成的，FragmentPagerAdapter 内部实现了对setUserVisibleHint()方法的调用，所以需要懒加载的结构最好使用 FragmentPagerAdapter + Fragment 的结构，少用PagerAdapter。</p>
+<h3 id="FragmentStatePagerAdapter-和-FragmentPagerAdapter-区别？"><a href="#FragmentStatePagerAdapter-和-FragmentPagerAdapter-区别？" class="headerlink" title="FragmentStatePagerAdapter 和 FragmentPagerAdapter 区别？"></a>FragmentStatePagerAdapter 和 FragmentPagerAdapter 区别？</h3><p>FragmentPagerAdapter 是另一种可用的 PagerAdapter，其用法和 FragmentStatePagerAdapter 基本一致，只是在卸载不需要的 fragment 时，各自采用的处理方法不同。</p>
+<p>FragmentStatePagerAdapter 会销毁不需要的 fragment，而 FragmentPagerAdapter 是调用 detach(Fragment) 方法来处理它，只是销毁了 fragment 的视图，而 fragment 的实例由 FragmentManager 维护，因此，FragmentPagerAdapter 创建的 fragment 永远不会被销毁。</p>
+<p>所以当数据量大时，可以选择 FragmentStatePagerAdapter，用户界面只有少量固定的 fragment 时，可以选择 FragmentPagerAdapter。</p>
+<h3 id="FragmentPagerAdapter-ViewPager-的注意事项"><a href="#FragmentPagerAdapter-ViewPager-的注意事项" class="headerlink" title="FragmentPagerAdapter+ViewPager 的注意事项 ?"></a><a href="https://juejin.im/post/5a1c068b6fb9a045030fcf8c" target="_blank" rel="noopener"><strong>FragmentPagerAdapter+ViewPager 的注意事项 ?</strong></a></h3><p>使用 FragmentPagerAdapter + ViewPager 时，切换回上一个 Fragment 页面时（已经初始化完毕），不会回调任何生命周期方法以及onHiddenChanged()，只有 setUserVisibleHint(boolean isVisibleToUser)会被回调，所以如果你想进行一些懒加载，需要在这里处理。</p>
+<p>在给ViewPager绑定FragmentPagerAdapter时，new FragmentPagerAdapter(fragmentManager)的FragmentManager，一定要保证正确，如果ViewPager是Activity内的控件，则传递getSupportFragmentManager()，如果是Fragment的控件中，则应该传递getChildFragmentManager()。只要记住ViewPager内的Fragments是当前组件的子Fragment这个原则即可。</p>
+<p>你不需要考虑在“内存重启”的情况下，去恢复的Fragments的问题，因为FragmentPagerAdapter已经帮我们处理啦。</p>
+<h3 id="未完待更新…"><a href="#未完待更新…" class="headerlink" title="未完待更新…"></a>未完待更新…</h3><p>未完待更新…</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: 'f001049beca27f93b7ec',
+            clientSecret: 'ff35fc6bcf78d776368077ae1f8c5333a13f4bd0',
+            repo: 'leaderliang.github.io',
+            owner: 'leaderliang',
+            admin: ['leaderliang'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/242f.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/ebf2.html" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpeg" alt="dev.liang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        dev.liang@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:dev.liang@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/01/">一月 2020<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/08/">八月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/android/">Android<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/java/">Java<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/XiaoMi/">XiaoMi<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/customize-view/">自定义 View<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">Git<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">Hexo<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/java/">Java<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/react-native/">React Native<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/rxjava/">RxJava<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/tools/">Tools<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/benefit-share/">benefit-share<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/wechat/">微信小程序<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/theory/">理论基础<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/manage-money/">理财<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/video/">视频推荐<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/design-patterns/">设计模式<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/interview/">面试<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/leave-a-message" title="给我留言">
+                
+                    <i class="material-icons sidebar-material-icons">email</i>
+                
+                给我留言
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="https://github.com/leaderliang" target="_blank" rel="noopener" title="GitHub">
+                
+                GitHub
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/1829.html" title="VPN 翻墙">
+                
+                VPN 翻墙
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="" title="最近访客">
+                
+                最近访客
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">35</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/2653833512" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/leaderliang" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Dev.liang's Blog
+            
+
+            <!--  不蒜子 统计访问量 -->
+            <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <div>
+                    <!-- 算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量 -->
+                    总阅读次数&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;次&nbsp;
+                    <span class="post-meta-divider">|</span>
+                    <!-- 算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数 -->
+                    &nbsp;您是第&nbsp;<span id="busuanzi_value_site_uv"></span>&nbsp;个到来的小伙伴
+                </div>
+            </div>
+
+ 
+        </div>
+
+   
+        
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <p>
+                Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a>
+            </p>
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+
+    <!-- baidu 站长站长配置 自动推送 -->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+            }
+            else {
+                bp.src = 'https://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?NO+c6mZDGYWZMpqy5qB3yA==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?x1uB3XKBvDVAt1USvsGG8A==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#DC143C'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #DC143C, 0 0 15px #DC143C'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#DC143C',
+        'border-left-color': '#DC143C'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('232tUzVxCgAj7vWMAvwzdX1d-gzGzoHsz', 'uIX1x31R4d6jXqcvcFGUQsE1');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+
+            <!-- Code hight light  代码高亮-->
+            <script src="/js/highlight.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                hljs.initHighlightingOnLoad();    
+                $(document).ready(function() {
+                  $('.code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                  });
+                });
+            </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+        </body>
+    
+</html>

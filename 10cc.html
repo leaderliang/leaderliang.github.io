@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+    <link rel="dns-prefetch" href="https://cdn1.lncld.net"/>
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+
+
+
+ 
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用 | 
+        
+        Dev.liang&#39;s Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/avatar.jpeg">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Dev.liang&#39;s Blog - Android 技术分享、生活记录"/>
+    <meta name="keywords" content="Android,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期,Android,RxJava"/>
+    <meta name="theme-color" content="#0097A7"/>
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?aE/Bb7RXvDHoOY6SKxbobg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Dev.liang&#39;s Blog">
+    <meta name="msapplication-starturl" content="https://leaderliang.coding.me/10cc.html">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Dev.liang&#39;s Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://leaderliang.coding.me/10cc.html">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用 | Dev.liang&#39;s Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="Dev.liang&#39;s Blog - Android 技术分享、生活记录">
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="RxJava"> 
+
+    
+        <meta property="article:published_time" content="Sun Dec 17 2017 21:56:58 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 20 2019 21:25:05 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://leaderliang.coding.me/10cc.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://leaderliang.coding.me/10cc.html",
+    "headline": "RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用",
+    "datePublished": "Sun Dec 17 2017 21:56:58 GMT+0800",
+    "dateModified": "Wed Nov 20 2019 21:25:05 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "dev.liang",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpeg"
+        },
+        "description": "Hi, Nice to meet u!"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dev.liang&#39;s Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Android,RxJavaAndroid,Fragment,Java,Shadowsocks,翻墙,hexo,Google,VPN,理财,P2P,荷包,视频推荐,video,设计模式,面试,Fragment,Fragment 生命周期",
+    "description": "Dev.liang&#39;s Blog - Android 技术分享、生活记录",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+
+    <!-- Bing Background 动态变换图片-->
+    
+        <script type="text/javascript">
+            queue.offer(function(){
+                $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+                $('body.lazy').lazyload();
+            });
+        </script>
+    
+
+    <!-- Custom Head -->
+    
+
+    <!-- hight light 代码高亮 -->
+    <link rel="stylesheet" href="/css/highlight/solarized-white.css" type="text/css">
+
+    <!-- 百度要验证的网站，HTML 标签验证 ，其中一种方式-->
+    <!-- baidu 站长工具验证代码 -->
+    <meta name="baidu-site-verification" content="W3v1HR1PT5" />
+    <!-- google 站长工具验证代码 -->
+    <meta name="google-site-verification" content="xkVTQEMiu9jq9ifY_Lg9DNuXJYnRfq1MVVAeLVna6S4" />
+    
+    <!-- fancybox support 应用 主题下 css js 文件-->
+    
+        <!-- for theme: default is false -->
+        <!-- for page: default is true -->
+        <script>lsloader.load("fancybox_js","/js/fancybox/jquery.fancybox.min.js?1glzq05Z/hboRWID7DvJ1w==", true)</script>
+        <script>lsloader.load("wrap_image_js","/js/wrapImage.js?KyGdrdh3jqfQLRvTgMf4Iw==", true)</script>
+        <style id="fancybox_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("fancybox_css","/js/fancybox/jquery.fancybox.min.css?otQlhCkvZMWCfotnsbOHJg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RxJava2-0"><span class="post-toc-number">1.</span> <span class="post-toc-text">RxJava2.0</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ObservableEmitter、Disposable、subscribe-解释"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ObservableEmitter、Disposable、subscribe() 解释</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ObservableEmitter"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">ObservableEmitter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Disposable"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Disposable</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#subscribe"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">subscribe()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RxJava-强大的线程控制之线程调度"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">RxJava 强大的线程控制之线程调度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上下游默认是在同一个线程工作"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">上下游默认是在同一个线程工作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在子线程中做耗时的操作-然后回到主线程中来操作-UI"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">在子线程中做耗时的操作, 然后回到主线程中来操作 UI</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RxJava-在-Android-中的实践"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">RxJava 在 Android 中的实践</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#说明"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">说明</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 22 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpeg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+
+    <!-- Author Name & Date -->
+    <div>
+        <strong>dev.liang</strong>
+        <!-- <span>21:56 12月 17, 2017</span> -->
+        <span>12月 17, 2017</span>        
+    </div>
+
+    <!-- 阅读时长，字数统计 在 scaffolds 目录 page.md 文件中设置了 wordcount 字段，目前为 false，因为样式有点问题
+     if (page.wordcount !== false)   
+     但还是会显示 ？？？？？
+    -->
+     
+    
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB9ElEQVR42u3aQZICIQwFUO9/6ZkDqMwP0DpNHivL6mp4LmJC8vg5Yj0wMDAwMDAwMP4N4xGvFy8Kvn/+/PzOuTNgYGB0Y/wR2obHfbHBED+m5mfAwMDoyRgHxPz5txvH7x8/g4GBgZFvkxwxCa8YGBgYVzMSwLgoxcDAwNhbxCYlazXsfqEWx8DAuCEjv5S/7vNH+xsYGBi3YpRHHBaOm4fXy2dGMDAwbsXIA996U3P80+RDHhgYGD0Z1aNXy9FHcW0uYjEwMG7OyA+aX5BVQ+dc4oiBgdGTUb6anzpidVzjbQjGwMBoxqiOeSWM9YZloYjFwMBow8gDaKHUXB5+LRSxGBgYhzKqgXVljUPq5sYABgbGQYy5UnM9WOcl62QtjoGBcRAjL0HnGgPrF3OF/w0MDIyjGXOD9dellcklHQYGRjdGsmXyfNIYyJPRC+dwMTAwbsvI25BziWDyA20uYjEwMI5jTKZocVKYJ4tRQMfAwGjDqK65QbE87Ss0QTEwMNowVkYlJrdfKIwxMDA6M5Igu+uKLQnZyfcYGBg9GXONzDy9qwbobf0NDAwMjGKbIQ/xH7o1xMDAOJqRNwCqx40GzjAwMFoykiK2GkxXGpzbZkYwMDCOYFQHIHJeft1fTjQxMDDaMO67MDAwMDAwMDC+un4Bj+14lbek1mkAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/android/" rel="tag">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/rxjava/" rel="tag">RxJava</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/10cc.html" class="leancloud-views_num" data-flag-title="RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用">
+     &nbsp;次阅读
+</span>
+
+            </li>
+        </a>
+    
+
+    <!-- busuanzi_value_page_pv busuanzi 页面访问记录-->
+    <!-- 
+         -->
+             <!-- Busuanzi Views -->
+
+            <!-- <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+      -->
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="https://service.weibo.com/share/share.php?appkey=&title=RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用&url=https://leaderliang.coding.me/10cc.html&pic=https://leaderliang.coding.me/img/avatar.jpeg&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用&url=https://leaderliang.coding.me/10cc.html&via=dev.liang" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://leaderliang.coding.me/10cc.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://leaderliang.coding.me/10cc.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+        <a class="post_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://leaderliang.coding.me/10cc.html&title=RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 LinkedIn
+            </li>
+        </a>
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="https://connect.qq.com/widget/shareqq/index.html?site=Dev.liang&#39;s Blog&title=RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用&summary=Dev.liang&#39;s Blog - Android 技术分享、生活记录&pics=https://leaderliang.coding.me/img/avatar.jpeg&url=https://leaderliang.coding.me/10cc.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+        <a class="post_share-link" href="https://telegram.me/share/url?url=https://leaderliang.coding.me/10cc.html&text=RxJava2.0 学习笔记 - 常用关键字解释、线程调度的使用" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Telegram
+            </li>
+        </a>
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="RxJava2-0"><a href="#RxJava2-0" class="headerlink" title="RxJava2.0"></a>RxJava2.0</h1><p>本文并非原创，通过各位博主博客学习后总结而得，以方便自己学习，在此感谢各位前辈，并在下面注明出处。</p>
+<h2 id="ObservableEmitter、Disposable、subscribe-解释"><a href="#ObservableEmitter、Disposable、subscribe-解释" class="headerlink" title="ObservableEmitter、Disposable、subscribe() 解释"></a>ObservableEmitter、Disposable、subscribe() 解释</h2><h3 id="ObservableEmitter"><a href="#ObservableEmitter" class="headerlink" title="ObservableEmitter"></a>ObservableEmitter</h3><p>Emitter 是发射器的意思，那就很好猜了，这个就是用来发出事件的，它可以发出三种类型的事件，通过调用 emitter 的 onNext(T value)、onComplete() 和 onError(Throwable error) 就可以分别发出 next 事件、complete 事件和 error 事件。</p>
+<p>注意，并不意味着可以随意发射乱七八糟的事件，需要满足一定的规则：</p>
+<ul>
+<li>上游可以发送无限个 onNext, 下游也可以接收无限个 onNext.</li>
+<li>当上游发送了一个 onComplete 后, 上游 onComplete 之后的事件将会继续发送, 而下游收到 onComplete 事件之后将不再继续接收事件.</li>
+<li>当上游发送了一个 onError 后,  上游 onError 之后的事件将继续发送, 而下游收到 onError 事件之后将不再继续接收事件.</li>
+<li>上游可以不发送 onComplete 或 onError.</li>
+<li>最为关键的是 onComplete 和 onError 必须唯一并且互斥, 即不能发多个 onComplete, 也不能发多个 onError,  也不能先发一个 onComplete, 然后再发一个 onError, 反之亦然</li>
+</ul>
+<blockquote>
+<p>注: 关于 onComplete 和 onError 唯一并且互斥这一点, 是需要自行在代码中进行控制, 如果你的代码逻辑中违背了这个规则, <strong>并不一定会导致程序崩溃.</strong> 比如发送多个onComplete是可以正常运行的, 依然是收到第一个 onComplete 就不再接收了, 但若是发送多个 onError, 则收到第二个 onError 事件会导致程序会崩溃， <a href="https://github.com/leaderliang/RxJavaProject/blob/master/app/src/main/java/com/android/rxjavaproject/RxUsage.java" target="_blank" rel="noopener">代码仓库里</a> 里都有写出。</p>
+</blockquote>
+<h3 id="Disposable"><a href="#Disposable" class="headerlink" title="Disposable"></a>Disposable</h3><p>单词的字面意思是一次性用品,用完即可丢弃的.  那么在RxJava中怎么去理解它呢, 对应于上面的水管的例子, 我们可以把它理解成两根管道之间的一个机关, 当调用它的 dispose() 方法时, 它就会将两根管道切断, 从而导致下游收不到事件.</p>
+<blockquote>
+<p>注意: 调用 dispose() 并不会导致上游不再继续发送事件, 上游会继续发送剩余的事件.</p>
+</blockquote>
+<h3 id="subscribe"><a href="#subscribe" class="headerlink" title="subscribe()"></a>subscribe()</h3><p>subscribe 有好几个重载方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public final Disposable subscribe() &#123;&#125;</span><br><span class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext) &#123;&#125;</span><br><span class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError) &#123;&#125; </span><br><span class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete) &#123;&#125;</span><br><span class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError, Action onComplete, Consumer&lt;? super Disposable&gt; onSubscribe) &#123;&#125;</span><br><span class="line">public final void subscribe(Observer&lt;? super T&gt; observer) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最后一个带有 Observer 参数的在 RxUsage 中的 commonUsageForChain（）已使用过；</li>
+<li>不带任何参数的 subscribe() 表示下游不关心任何事件,你上游尽管发你的数据去吧, 下游可不关心你发什么；</li>
+<li>带有一个 Consumer 参数的方法表示下游只关心 onNext 事件, 其他的事件我假装没看见, 因此我们如果只需要 onNext 事件可以这么写；</li>
+<li>其他几个方法同理, 这里就不解释啦，下面示例已列出。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;emitter 1&quot;);</span><br><span class="line">                emitter.onNext(1);</span><br><span class="line">                Log.d(TAG, &quot;emitter 2&quot;);</span><br><span class="line">                emitter.onNext(2);</span><br><span class="line">                Log.d(TAG, &quot;emitter 3&quot;);</span><br><span class="line">                emitter.onNext(3);</span><br><span class="line">                Log.d(TAG, &quot;emitter complete&quot;);</span><br><span class="line">                emitter.onComplete();</span><br><span class="line">                Log.d(TAG, &quot;emitter 4&quot;);</span><br><span class="line">                emitter.onNext(4);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).subscribe(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, new Consumer&lt;Throwable&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void accept(Throwable throwable) throws Exception &#123;</span><br><span class="line">                        </span><br><span class="line">           &#125;</span><br><span class="line">        &#125;...);</span><br></pre></td></tr></table></figure>
+
+<h2 id="RxJava-强大的线程控制之线程调度"><a href="#RxJava-强大的线程控制之线程调度" class="headerlink" title="RxJava 强大的线程控制之线程调度"></a>RxJava 强大的线程控制之线程调度</h2><h3 id="上下游默认是在同一个线程工作"><a href="#上下游默认是在同一个线程工作" class="headerlink" title="上下游默认是在同一个线程工作"></a>上下游默认是在同一个线程工作</h3><p>在主线程中分别创建上游和下游, 然后将他们连接在一起, 同时分别打印出它们所在的线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">    Observable&lt;Integer&gt; observable = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observable thread is : &quot; + Thread.currentThread().getName());</span><br><span class="line">            Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Consumer&lt;Integer&gt; consumer = new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observer thread is :&quot; + Thread.currentThread().getName());</span><br><span class="line">            Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    observable.subscribe(consumer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E/RxUsage: TAG: Observable thread is : main</span><br><span class="line">E/RxUsage: TAG: emit 1                     </span><br><span class="line">E/RxUsage: TAG: Observer thread is :main   </span><br><span class="line">E/RxUsage: TAG: onNext: 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="在子线程中做耗时的操作-然后回到主线程中来操作-UI"><a href="#在子线程中做耗时的操作-然后回到主线程中来操作-UI" class="headerlink" title="在子线程中做耗时的操作, 然后回到主线程中来操作 UI"></a>在子线程中做耗时的操作, 然后回到主线程中来操作 UI</h3><p><img src="./img/blog/rxjava/1555487716792.jpg" alt="thread"></p>
+<p>黄色水管表示子线程, 深蓝色水管表示主线程;<br>我们需要先改变上游发送事件的线程, 让它在子线程中发送事件, 然后再改变下游的线程, 让它去主线程接收事件. 通过 RxJava 内置的线程调度器可以轻松做到这一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static void testPrintThreadName()&#123;</span><br><span class="line">    Observable&lt;Integer&gt; observable = Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void subscribe(ObservableEmitter&lt;Integer&gt; emitter) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observable thread is : &quot; + Thread.currentThread().getName());</span><br><span class="line">            Log.d(TAG, &quot;emit 1&quot;);</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    Consumer&lt;Integer&gt; consumer = new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">            Log.d(TAG, &quot;Observer thread is :&quot; + Thread.currentThread().getName());</span><br><span class="line">            Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    observable.subscribeOn(Schedulers.newThread())</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .subscribe(consumer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E/RxUsage: Observable thread is : RxNewThreadScheduler-1</span><br><span class="line">E/RxUsage: emit 1</span><br><span class="line">E/RxUsage: Observer thread is :main</span><br><span class="line">E/RxUsage: onNext: 1</span><br></pre></td></tr></table></figure>
+
+<p>从打印结果可以看出, 上游发送事件的线程的确改变了, 是在一个叫  RxNewThreadScheduler-1 的线程中发送的事件, 而下游仍然在主线程中接收事件,这就完美实现了在 Android 中在子线程中做完耗时操作，然后在主线程更新 UI 的操作。</p>
+<p>切换线程主要通过以下两行操作来实现的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.subscribeOn(Schedulers.newThread())                                              </span><br><span class="line">.observeOn(AndroidSchedulers.mainThread())</span><br></pre></td></tr></table></figure>
+
+<p><code>subscribeOn()</code> 指定的是上游发送事件的线程；<code>observeOn()</code> 指定的是下游接收事件的线程；</p>
+<p>补充：</p>
+<blockquote>
+<p>多次指定 <code>上游</code> 的线程只有第一次指定的有效, 也就是说多次调用 subscribeOn() 只有<code>第一次的有效</code>, 其余的会被忽略；<br>多次指定 <code>下游</code> 的线程是可以的, 也就是说每调用一次 observeOn() , <code>下游的线程就会切换一次</code>。</p>
+</blockquote>
+<p>为上面补充举个例子，方法见 <a href="https://github.com/leaderliang/RxJavaProject/blob/150273c7a6697bd8c08be8bacb24027397bd9336/app/src/main/java/com/android/rxjavaproject/RxUsage.java" target="_blank" rel="noopener">RxUsage.java - testPrintThreadNameMoreChange（）</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">observable.subscribeOn(Schedulers.newThread())     </span><br><span class="line">         .subscribeOn(Schedulers.io())              </span><br><span class="line">         .observeOn(AndroidSchedulers.mainThread()) </span><br><span class="line">         .observeOn(Schedulers.io())                </span><br><span class="line">         .subscribe(consumer);</span><br></pre></td></tr></table></figure>
+
+<p>上下游分别指定了两次发送事件的线程，上游分别是newThread和IO线程, 下游分别是main和IO线程。结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E/RxUsage: Observable thread is : RxNewThreadScheduler-1</span><br><span class="line">E/RxUsage: emit 1</span><br><span class="line">E/RxUsage: Observer thread is :RxCachedThreadScheduler-2</span><br><span class="line">E/RxUsage: onNext: 1</span><br></pre></td></tr></table></figure>
+
+
+<p>可以看到, 上游虽然指定了两次线程, 但只有第一次指定的有效, 依然是在 RxNewThreadScheduler 线程中, 而下游则在 RxCachedThreadScheduler 中, 这个 CacheThread 就是IO线程池中的一个。</p>
+<p>可以通过 doOnNext（）清晰的看到下游的线程切换过程, 打印 log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">observable.subscribeOn(Schedulers.newThread())</span><br><span class="line">        .subscribeOn(Schedulers.io())</span><br><span class="line">        .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">        .doOnNext(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                Log.e(TAG, &quot;After observeOn(mainThread), current thread is: &quot; + Thread.currentThread().getName());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .observeOn(Schedulers.io())</span><br><span class="line">        .doOnNext(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void accept(Integer integer) throws Exception &#123;</span><br><span class="line">                Log.e(TAG, &quot;After observeOn(io), current thread is: &quot; + Thread.currentThread().getName());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .subscribe(consumer);</span><br></pre></td></tr></table></figure>
+
+<p>上下游线程切换之后, 把当前的线程打印出来, 运行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">E/RxUsage: Observable thread is : RxNewThreadScheduler-1</span><br><span class="line">E/RxUsage: emit 1</span><br><span class="line">E/RxUsage: After subscribeOn(newThread), current thread is: RxNewThreadScheduler-1</span><br><span class="line">E/RxUsage: After subscribeOn(io), current thread is: RxNewThreadScheduler-1</span><br><span class="line">E/RxUsage: After observeOn(mainThread), current thread is: main</span><br><span class="line">E/RxUsage: After observeOn(io), current thread is: RxCachedThreadScheduler-2</span><br><span class="line">E/RxUsage: Observer thread is :RxCachedThreadScheduler-2</span><br><span class="line">E/RxUsage: onNext: 1</span><br></pre></td></tr></table></figure>
+
+<p>可以看到, 每调用一次 <code>subscribeOn</code> 和 <code>observeOn()</code> 线程都会切换一次, 项目中如果有有类似的需求时, 可灵活处理。</p>
+<p>在 RxJava 中, 内置的线程：</p>
+<ul>
+<li>Schedulers.io() 代表io操作的线程, 通常用于网络,读写文件等io密集型的操作</li>
+<li>Schedulers.computation() 代表CPU计算密集型的操作, 例如需要大量计算的操作</li>
+<li>Schedulers.newThread() 代表一个常规的新线程</li>
+<li>AndroidSchedulers.mainThread()  代表Android的主线程</li>
+</ul>
+<p>在 RxJava 内部使用的是线程池来维护这些线程, 效率相对比较高.</p>
+<h3 id="RxJava-在-Android-中的实践"><a href="#RxJava-在-Android-中的实践" class="headerlink" title="RxJava 在 Android 中的实践"></a>RxJava 在 Android 中的实践</h3><p>对于 Android 开发来说, 经常会将一些耗时的操作放在后台, 比如网络请求或者读写文件,操作数据库等等,等到操作完成之后回到主线程去更新 UI 这样的场景经常用到。</p>
+<p>要使用 Retrofit,先添加 Gradle 配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*RxJava*/</span><br><span class="line">implementation &apos;io.reactivex.rxjava2:rxjava:2.2.8&apos;</span><br><span class="line">implementation &apos;io.reactivex.rxjava2:rxandroid:2.1.1&apos;</span><br><span class="line">/*retrofit*/</span><br><span class="line">implementation &apos;com.squareup.retrofit2:retrofit:2.5.0&apos;</span><br><span class="line">/*Gson converter*/</span><br><span class="line">implementation &apos;com.squareup.retrofit2:converter-gson:2.5.0&apos;</span><br><span class="line">/*RxJava2 Adapter*/</span><br><span class="line">implementation &apos;com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0&apos;</span><br><span class="line">/*okHttp*/</span><br><span class="line">implementation &apos;com.squareup.okhttp3:okhttp:3.12.0&apos;</span><br><span class="line">implementation &apos;com.squareup.okhttp3:logging-interceptor:3.9.0&apos;</span><br><span class="line">/*fastJson*/</span><br><span class="line">implementation &apos;com.alibaba:fastjson:1.2.56&apos;</span><br></pre></td></tr></table></figure>
+
+<p>具体操作可点击查看代码,主要有这几个类，另外使用了 <a href="https://api.github.com/" target="_blank" rel="noopener">api.github</a> 接口：</p>
+<p><a href="https://github.com/leaderliang/RxJavaProject/blob/150273c7a6697bd8c08be8bacb24027397bd9336/app/src/main/java/com/android/rxjavaproject/retrofit/GithubService.java" target="_blank" rel="noopener">GithubService.java </a></p>
+<p><a href="https://github.com/leaderliang/RxJavaProject/blob/150273c7a6697bd8c08be8bacb24027397bd9336/app/src/main/java/com/android/rxjavaproject/retrofit/Repo.java" target="_blank" rel="noopener">Repo.java</a></p>
+<p><a href="https://github.com/leaderliang/RxJavaProject/blob/150273c7a6697bd8c08be8bacb24027397bd9336/app/src/main/java/com/android/rxjavaproject/RetrofitClient.java" target="_blank" rel="noopener">RetrofitClient</a></p>
+<p>都统一在 MainActivity 中进行调用。</p>
+<p>看似很完美, 但我们忽略了一点, 如果在请求的过程中 Activity 已经退出了, 这个时候如果回到主线程去更新 UI, 那么APP肯定就崩溃了, 可以往上翻 <a href="#Disposable">Disposable</a> , 说它是个开关, 调用它的dispose()方法时就会切断水管, 使得下游收不到事件, 既然收不到事件, 那么也就不会再去更新UI了. 因此我们可以在 Activity 中将这个 Disposable 保存起来, 当 Activity退出时, 切断它即可。</p>
+<p>那如果有多个 Disposable 该怎么办呢, RxJava 中已经内置了一个容器 <code>CompositeDisposable</code>, 每当我们得到一个 <code>Disposable</code> 时就调用 <code>CompositeDisposable.add()</code> 将它添加到容器中, 在退出的时候, 调用 <code>CompositeDisposable.clear()</code> 即可切断所有的水管。</p>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>本文并非原创，通过各位博主博客学习后总结而得，以方便自己学习，在此感谢各位前辈，并在下面注明出处。</p>
+<ul>
+<li><a href="https://www.jianshu.com/u/c50b715ccaeb" target="_blank" rel="noopener">https://www.jianshu.com/u/c50b715ccaeb</a></li>
+<li><a href="https://www.jianshu.com/p/a93c79e9f689" target="_blank" rel="noopener">https://www.jianshu.com/p/a93c79e9f689</a></li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: 'f001049beca27f93b7ec',
+            clientSecret: 'ff35fc6bcf78d776368077ae1f8c5333a13f4bd0',
+            repo: 'leaderliang.github.io',
+            owner: 'leaderliang',
+            admin: ['leaderliang'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/32d4.html" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/ca0a.html" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpeg" alt="dev.liang's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        dev.liang@outlook.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:dev.liang@outlook.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/01/">一月 2020<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/11/">十一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/08/">八月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">四月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/android/">Android<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/java/">Java<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/Kotlin/">Kotlin<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/XiaoMi/">XiaoMi<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/android/customize-view/">自定义 View<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/git/">Git<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/hexo/">Hexo<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/java/">Java<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/react-native/">React Native<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/rxjava/">RxJava<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/tools/">Tools<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/benefit-share/">benefit-share<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/wechat/">微信小程序<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/theory/">理论基础<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/manage-money/">理财<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/video/">视频推荐<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/design-patterns/">设计模式<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/interview/">面试<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">cloud</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/leave-a-message" title="给我留言">
+                
+                    <i class="material-icons sidebar-material-icons">email</i>
+                
+                给我留言
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="https://github.com/leaderliang" target="_blank" rel="noopener" title="GitHub">
+                
+                GitHub
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/1829.html" title="VPN 翻墙">
+                
+                VPN 翻墙
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="" title="最近访客">
+                
+                最近访客
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">35</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/2653833512" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/leaderliang" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;Dev.liang's Blog
+            
+
+            <!--  不蒜子 统计访问量 -->
+            <div>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                <div>
+                    <!-- 算法a：pv的方式，单个用户连续点击n篇文章，记录n次访问量 -->
+                    总阅读次数&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;次&nbsp;
+                    <span class="post-meta-divider">|</span>
+                    <!-- 算法b：uv的方式，单个用户连续点击n篇文章，只记录1次访客数 -->
+                    &nbsp;您是第&nbsp;<span id="busuanzi_value_site_uv"></span>&nbsp;个到来的小伙伴
+                </div>
+            </div>
+
+ 
+        </div>
+
+   
+        
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <p>
+                Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a>
+            </p>
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+
+    <!-- baidu 站长站长配置 自动推送 -->
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+            }
+            else {
+                bp.src = 'https://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?NO+c6mZDGYWZMpqy5qB3yA==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?x1uB3XKBvDVAt1USvsGG8A==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#DC143C'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #DC143C, 0 0 15px #DC143C'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#DC143C',
+        'border-left-color': '#DC143C'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('232tUzVxCgAj7vWMAvwzdX1d-gzGzoHsz', 'uIX1x31R4d6jXqcvcFGUQsE1');
+    </script>
+    <script type="text/ls-javascript" id="leancloud-views-script">
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?color= :black, blue, brown, green, multi, orange, pink, purple, red, white, yellow type= :C,N,S,T,A');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+
+            <!-- Code hight light  代码高亮-->
+            <script src="/js/highlight.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                hljs.initHighlightingOnLoad();    
+                $(document).ready(function() {
+                  $('.code').each(function(i, block) {
+                    hljs.highlightBlock(block);
+                  });
+                });
+            </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+        </body>
+    
+</html>
